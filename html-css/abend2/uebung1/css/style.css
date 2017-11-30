@@ -2,24 +2,13 @@ body{
     font-family: Verdana, sans-serif;
 }
 
+img{
+    height: 100%;
+
+}
+
 a{
     text-decoration: none;
-}
-
-
-.clearfix:after{
-    content:"";
-    display: table;
-    clear:both;
-}
-
-.container{
-
-}
-
-.header{
-    height:100px;
-    background-color: lightgrey;
 }
 
 ul{
@@ -41,6 +30,31 @@ li a{
     text-decoration: none;
 }
 
+li a:hover{
+    color:#808080;
+}
+
+
+.clearfix:after{
+    content:"";
+    display: table;
+    clear:both;
+}
+
+.main{
+
+}
+
+.container{
+
+}
+
+.header{
+    height:100px;
+    background-color: lightgrey;
+}
+
+
 .navi{
 
 }
@@ -49,14 +63,25 @@ li a{
 
 .content{
     width:80%;
-    height:300px;
+    /*height:300px;*/
     float:left;
     background-color: lightsalmon;
 }
 
 .weather{
-
+    width:20%;
     float:left;
     background-color: lightcoral;
 
+}
+
+.author{
+    padding:30px 0;
+    margin:0 auto;
+
+}
+
+.footer{
+
+    background-color: aliceblue;
 }
