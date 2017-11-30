@@ -5,6 +5,7 @@
 
 body{
     font-family: Verdana, sans-serif;
+    margin:0;
 }
 
 img{
@@ -48,15 +49,17 @@ li a:hover{
 .main{
     margin:0;
     padding:0;
+    width:100%;
 }
 
 .container{
 
-    display: flex;
+    /*display: flex;*/
+    display: table;
 }
 
 .imgcontainer{
-    display:inlin
+
 }
 
 .header{
@@ -84,12 +87,13 @@ li a:hover{
     margin:5px;
 }
 
-.weather{
+.asidebox{
     width:20%;
     float:left;
     background-color: lightcoral;
     padding:5px;
     /*min-height:300px;*/
+    display: table-cell;
 
 }
 
