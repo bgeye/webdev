@@ -36,7 +36,6 @@ body{
     margin:0;
     font-family: “Helvetica Neue”, Helvetica, Arial, sans-serif;
     font-size: 14px;
-    textt-transform:lowercase;
     font-weight: lighter;
     background-color:#f5f5f5 ;
     color:#4d4d4d;
@@ -47,14 +46,42 @@ h1{
     text-align:center;
 }
 
+img{
+    width:100%;
+    height:100%;
+}
+
+/*btn*/
+
 button{
     border:none;
     background-color:#ffffff;
+    padding:0;
+    margin:0;
+}
+
+.angle-btn{
+    padding-left:10px;
+}
+
+.list-del{
+    padding-right: 10px;
+}
+
+/*images*/
+.angle-btn img{
+    width:20px;
+    height:12px;
+}
+
+.list-del img{
+    width:12px;
+    height:12px;
 }
 
 /*list*/
 .container{
-    width:50%;
+    width:35%;
     margin:0 auto;
     margin-top:100px;
 }
@@ -68,39 +95,58 @@ button{
     font-size:24px;
 }
 
+.item-txt{
+    padding-left: 10px;
+}
+
+.input-element,
+.list-item{
+    padding:25px 0;
+    border-bottom:1px solid #ededed;
+}
+
+.item-done{
+    text-decoration: line-through;
+    color:#ededed;
+}
+
+.list-del{
+    float:right;
+}
+
+.list-check{
+    float:left;
+}
+
+
+
+
+input:focus{
+    outline:none;
+}
+
 input::placeholder{
     font-style:italic;
 }
 
-.input-element,
-.list-content{
-     padding:25px 0;
-     border-bottom:1px solid #ededed;
- }
-
-.footer{
-    padding:15px;
+label{
+    cursor:pointer;
+    padding-left: 10px;
 }
-
-
 
 input[type="text"]{
     border:none;
-    width:95%;
-    float:right;
+    width:80%;
+    padding-left: 8px;
+    color:#4d4d4d;
 }
 
 input[type="text"]:active{
     border:none;
 }
 
-
 input[type="checkbox"]{
     display:none;
-}
-
-label{
-    cursor:pointer;
 }
 
 input[type="checkbox"] + label span{
@@ -111,6 +157,24 @@ input[type="checkbox"] + label span{
     background: url(../img/chck_active.svg)0px center no-repeat;
 }
 
+input[type="checkbox"]:checked + label span{
+    display:inline-block;
+    vertical-align:middle;
+    width:25px;
+    height:25px;
+    background: url(../img/chck_inactive.svg)0px center no-repeat;
+}
+
+
+
+.footer{
+    padding:15px 10px;
+}
+
+
+
+
+
 /*
 input[type="checkbox"] + label span::checked{
     background: url(../img/chck_inactive.svg)0px center no-repeat;
@@ -119,28 +183,13 @@ input[type="checkbox"] + label span::checked{
 
 
 
-input:focus{
-    outline:none;
-}
 
 
 
 
 
-.list-check{
-    float:left;
-}
-
-.list-del{
-float:right
-}
 
 
-/*buttons*/
-
-.angle-btn img{
-
-}
 
 
 
