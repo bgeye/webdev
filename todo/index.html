@@ -11,14 +11,26 @@
     <div class="container">
         <h1>todos</h1>
         <div class="list-container">
-            <div class="input">
-                <input type="text" id="addtodo" name="addtodo">
+            <div class="input-element">
+                <button class="angle-btn">
+                    <img  src="./img/angle-down.svg">
+                </button>
+                <input type="text" id="addtodo" class="list-font" name="addtodo" placeholder="What needs to be done?">
             </div>
             <ul class="list-elements">
-                <li class="list-content clearfix">
-                    <div class="list-check"><input type="checkbox" id="listcheck"></div>
+                <li class="list-content list-font">
+                    <div class="list-check">
+                        <input type="checkbox" id="listcheck" checked>
+                        <label for="listcheck">
+                            <span></span>
+                        </label>
+                    </div>
                     <span>Milch</span>
-                    <div class="list-del"><button>x</button></div>
+                    <div class="list-del">
+                        <button>
+                            <img  src="./img/close.svg">
+                        </button>
+                    </div>
                 </li>
             </ul>
             <div class="footer">

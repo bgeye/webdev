@@ -7,9 +7,17 @@ Grau für Linie: #ededed
 Text: #4d4d4d
 Rot: #af2f2f
 Weiss: #ffffff
+Schriftart: “Helvetica Neue”, Helvetica, Arial, sans-serif;
+Standard-Schriftgrösse: 14px
 
+
+#icons
+https://github.com/encharm/Font-Awesome-SVG-PNG
 
 */
+
+
+/*general*/
 
 *{
     box-sizing: border-box;
@@ -22,6 +30,7 @@ Weiss: #ffffff
 }
 
 
+/*elements*/
 body{
     padding:0;
     margin:0;
@@ -35,23 +44,88 @@ body{
 
 h1{
     font-size: 100px;
-    color:#af2f2f;
     text-align:center;
 }
 
+button{
+    border:none;
+    background-color:#ffffff;
+}
+
+/*list*/
 .container{
     width:50%;
     margin:0 auto;
     margin-top:100px;
-    background-color:#ffffff ;
-
 }
 
-.input,
-.list-elements,
+.list-container{
+   background-color:#ffffff;
+   border:1px solid #ededed;
+}
+
+.list-font{
+    font-size:24px;
+}
+
+input::placeholder{
+    font-style:italic;
+}
+
+.input-element,
+.list-content{
+     padding:25px 0;
+     border-bottom:1px solid #ededed;
+ }
+
 .footer{
-    border-bottom:1px solid #ededed;
+    padding:15px;
 }
+
+
+
+input[type="text"]{
+    border:none;
+    width:95%;
+    float:right;
+}
+
+input[type="text"]:active{
+    border:none;
+}
+
+
+input[type="checkbox"]{
+    display:none;
+}
+
+label{
+    cursor:pointer;
+}
+
+input[type="checkbox"] + label span{
+    display:inline-block;
+    vertical-align:middle;
+    width:25px;
+    height:25px;
+    background: url(../img/chck_active.svg)0px center no-repeat;
+}
+
+/*
+input[type="checkbox"] + label span::checked{
+    background: url(../img/chck_inactive.svg)0px center no-repeat;
+}
+*/
+
+
+
+input:focus{
+    outline:none;
+}
+
+
+
+
 
 .list-check{
     float:left;
@@ -62,6 +136,11 @@ float:right
 }
 
 
+/*buttons*/
+
+.angle-btn img{
+
+}
 
 
 
