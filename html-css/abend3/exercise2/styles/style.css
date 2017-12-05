@@ -1,0 +1,33 @@
+
+
+*{
+    box-sizing: border-box;
+}
+
+.head,
+.foot{
+    height:30px;
+    background-color:black;
+    color:white;
+}
+
+.container{
+    display:flex;
+}
+
+.nav,
+.aside{
+    width:20%;
+    background-color: lightgrey;
+
+}
+
+.item-content{
+    width:80%;
+}
+
+
+.item-content{
+    flex-grow: 4;
+}
+
