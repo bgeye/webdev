@@ -35,18 +35,8 @@ body{
 
 @media(max-width:768px){
 
-<<<<<<< HEAD
-
-=======
+    
     .nav,
-    .aside{
-
-        flex-grow:unset;
-    }
-
-
-    .nav,
->>>>>>> 7505359201542e187d483bd6cc20fcb193dd30f5
     .aside,
     .item-content{
         /*width:100%;*//*why width?*/
