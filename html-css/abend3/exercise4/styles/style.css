@@ -1,0 +1,26 @@
+html,body{
+    height:100%;
+}
+
+
+
+.container{
+    border: 1px solid red;
+    height:100%;
+    position:relative;
+    display: block;
+}
+
+
+.inner{
+    display:inline-block;
+    background-color: lightgrey;
+    vertical-align: middle;
+}
+
+.inner:before{
+    content:'';
+    width:0;
+    height:100%;
+
+}
