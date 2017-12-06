@@ -27,8 +27,6 @@ body{
     flex-grow: 1;
     background-color: lightgrey;
 
-}
-
 .item-content{
     flex-basis:60%;
 }
@@ -37,7 +35,7 @@ body{
 
 @media(max-width:768px){
 
-    .nav,
+
     .aside,
     .item-content{
         /*width:100%;*//*why width?*/
