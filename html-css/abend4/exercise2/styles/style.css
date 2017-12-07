@@ -1,0 +1,23 @@
+
+
+.container{
+    padding-top: 100px;
+
+}
+
+.cube{
+    position:absolute;
+    left:50%;
+    top:50%;
+    background-color: tomato;
+    width:250px;
+    height:250px;
+    transition:all 1s ease;
+    margin: 0 auto;
+}
+
+
+.cube:hover{
+    transform: rotate(90deg);
+    top:20%;
+}
