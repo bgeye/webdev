@@ -1,46 +1,22 @@
 
-
-
-
-
-
-label{
-    background-color: darkgray;
+body{
+    margin-top:200px;
 }
+
 
 .container{
-    display:flex;
-    flex-flow:row wrap;
-}
-
-.container > *{
-    flex:1 100%;
-}
-
-.header,
-.footer{
-
-    height:100px;
-}
-
-
-
-.field-container{
-    flex-basis: 50%;
+    width:50%;
+    margin:0 auto;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
 }
 
-.left-space,
-.right-space{
-    flex:1 auto;
-}
 
 .field{
+    display: flex;
     flex-basis: 50%;
 }
 
-.right{
-    text-align: right;
+.addon-field{
+    flex:1;
 }

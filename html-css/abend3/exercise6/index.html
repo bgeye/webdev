@@ -8,29 +8,25 @@
 <body>
 
 <div class="container">
-    <div class="header"></div>
-    <div class="left-space"><span> </span></div>
-    <div class="field-container">
-        <div class="field right">
-            <label for="amount">Amount</label>
-            <input type="txt" id="amount" name="amount">
-        </div>
-        <div class="field">
-            <input type="txt" id="go" name="go">
-            <label for="amount">Go</label>
-        </div>
-        <div class="field right">
-            <label for="search">Search</label>
-            <input type="txt" id="search" name="search">
-        </div>
-        <div class="field">
-            <input type="txt" id="favorite" name="favorite">
-            <label for="favorite">Favorite</label>
-        </div>
 
+        <div class="field">
+            <span class="addon-item">Amount</span>
+            <input type="txt" id="amount" name="amount" class="addon-field">
+        </div>
+        <div class="field">
+            <input type="txt" id="go" name="go" class="addon-field">
+            <button class="addon-item">Go</button>
+        </div>
+    <div class="field">
+        <button class="addon-item">search</button>
+        <input type="txt" id="search" name="search" class="addon-field">
     </div>
-    <div class="right-space"><span> </span></div>
-    <div class="footer"></div>
+    <div class="field">
+        <input type="txt" id="favorite" name="favorite" class="addon-field">
+        <button class="addon-item">Favorite</button>
+    </div>
+
+
 </div>
 
 
