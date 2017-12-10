@@ -10,19 +10,14 @@
 
 .inner{
     display:flex;
+    justify-content: center;
 }
 
 .center{
     width:60%;
 }
 
-.left,
-.right{
-    flex-grow: 1;
-}
 
-.top,
-.bottom,
-.inner{
+.container > *{
     flex-basis: 100%;
 }
