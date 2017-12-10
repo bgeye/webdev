@@ -2,22 +2,17 @@
 
 .container{
     display:flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
     border:1px solid tomato;
     height:500px;
 
 }
 
 .inner{
-    display:flex;
-    justify-content: center;
-}
 
-.center{
     width:60%;
-}
+    background-color: darkgray;
 
-
-.container > *{
-    flex-basis: 100%;
 }
