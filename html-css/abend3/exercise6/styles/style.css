@@ -1,0 +1,46 @@
+
+
+
+
+
+
+label{
+    background-color: darkgray;
+}
+
+.container{
+    display:flex;
+    flex-flow:row wrap;
+}
+
+.container > *{
+    flex:1 100%;
+}
+
+.header,
+.footer{
+
+    height:100px;
+}
+
+
+
+.field-container{
+    flex-basis: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.left-space,
+.right-space{
+    flex:1 auto;
+}
+
+.field{
+    flex-basis: 50%;
+}
+
+.right{
+    text-align: right;
+}
