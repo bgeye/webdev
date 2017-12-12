@@ -95,8 +95,8 @@ button{
    display:flex;    /*flex-container 2*/
    flex-wrap:wrap;  /*flex-container 2*/
    background-color:#ffffff;
-   border:1px solid #ededed;
-
+   border:1px solid: #ededed;
+   box-shadow:1em 1em 1em #ededed,-1em 0 1em #ededed;
 
 }
 
@@ -109,14 +109,27 @@ button{
 .input-element{
     flex-basis: 100%; /*flex-item 2*/
     display:flex;     /*flex-container 3*/
-
+    padding:25px 0;
 }
 
 .input-element,
 .list-item{
     display:flex; /*flex-container 4*/
-    padding:25px 0;
+
     border-bottom:1px solid #ededed;
+}
+
+list-item{
+   transition: all 0.4s ease-out;
+   opacity:0;
+}
+
+.show{
+    padding:25px 0;
+}
+
+.list-item.show{
+    opacity:1;
 }
 
 .list-elements{
@@ -144,6 +157,8 @@ button{
 
 
 
+
+/*input fields list*/
 
 input:focus{
     outline:none;
