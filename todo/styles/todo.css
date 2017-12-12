@@ -124,6 +124,9 @@ list-item{
    opacity:0;
 }
 
+
+
+
 .show{
     padding:25px 0;
 }
@@ -162,7 +165,29 @@ list-item{
 
 input:focus{
     outline:none;
+   /* animation: anim-shadow 0.3s forwards;*/
 }
+/*
+
+
+@-webkit-keyframes anim-shadow {
+	to {
+		box-shadow: 0px 0px 100px 50px tomato;
+    	opacity: 0;
+	}
+}
+
+@keyframes anim-shadow {
+	to {
+		box-shadow: 0px 0px 100px 50px tomato;
+    	opacity: 0;
+	}
+}
+
+*/
+
+
+
 
 input::placeholder{
     font-style:italic;
