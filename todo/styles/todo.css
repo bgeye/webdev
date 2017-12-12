@@ -62,7 +62,7 @@ button{
     flex-grow: 1; /*flex-item 3*/
 }
 
-.angle-btn{
+.add-btn{
     padding:0 10px;
 }
 
@@ -71,7 +71,7 @@ button{
 }
 
 /*images*/
-.angle-btn img{
+.add-btn img{
     width:20px;
     height:12px;
 }
