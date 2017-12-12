@@ -1,0 +1,35 @@
+*{
+    box-sizing:border-box;
+}
+
+.container{
+    padding-top: 100px;
+    height: 500px;
+    width: 500px;
+    position: relative;
+    border:1px solid red;
+}
+
+.cube{
+    position:absolute;
+    left:25%;
+    top:25%;
+    background-color: tomato;
+    width:250px;
+    height:250px;
+    transition:all cubic-bezier(0,.42,1,.44) 0.5s;
+    margin: 0 auto;
+    color:white;
+    padding:5px;
+    border-radius:5px;
+}
+
+
+.container:hover .cube{
+
+    transform: rotate(360deg) scale(2,0.5) skewX(10deg) translate(150%,-20%);
+    left:200%
+    top:0;*/
+    /*border-radius:60px;*/
+    background-color:lightskyblue;
+}
