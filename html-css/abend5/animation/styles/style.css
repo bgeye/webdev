@@ -1,0 +1,150 @@
+
+*{
+    box-sizing: border-box;
+}
+
+
+body{
+    margin:0;
+
+
+}
+
+/*
+
+/* @keyframes Dauer | Timingfunktion | Verzögerung |
+   Anzahl der Iterationen | Richtung | Füllmodus | Abspielstatus | Name
+animation: 3s ease-in 1s 2 reverse both paused slidein;*/
+
+
+
+.figure{
+    position:absolute;
+    width:50px;
+    height:50px;
+    border-radius: 50%;
+    top:50%;
+    left:0;
+    background-color: tomato;
+    animation:move 5s linear forwards infinite;
+
+}
+
+.figure2{
+    position:absolute;
+    width:50px;
+    height:50px;
+    border-radius: 50%;
+    top:50%;
+    left:0;
+    background-color: tomato;
+    animation:move 5s linear 0.1s forwards infinite;
+
+}
+
+.figure3{
+    position:absolute;
+    width:50px;
+    height:50px;
+    border-radius: 50%;
+    top:50%;
+    left:0;
+    background-color: tomato;
+    animation:move 5s linear 0.2s forwards infinite;
+
+}
+
+.figure4{
+    position:absolute;
+    width:50px;
+    height:50px;
+    border-radius: 50%;
+    top:50%;
+    left:0;
+    background-color: tomato;
+    animation:move 5s linear 0.3s forwards infinite ;
+
+}
+
+
+.block{
+
+    position:absolute;
+    width:150px;
+    height:50px;
+    top:50%;
+    left:70%;
+    background-color: lightskyblue;
+    animation:slideup 1s linear 3.6s  infinite alternate;
+}
+
+.block2{
+    position:absolute;
+    width:150px;
+    height:50px;
+    top:30%;
+    left:70%;
+    background-color: lightskyblue;
+    animation:slidedown 1s linear 3.6s  infinite alternate;
+}
+
+
+
+@keyframes slideup{
+    0%{
+        top:50%;
+    }
+
+    100%{
+        top:20%;
+    }
+
+}
+
+
+@keyframes slidedown{
+    0%{
+        top:30%;
+    }
+
+    100%{
+        top:60%;
+    }
+
+}
+
+
+
+@keyframes move{
+    0%{
+        left:0;
+    }
+
+    20%{
+        top:30%;
+    }
+
+    40%{
+        top:50%;
+    }
+
+    60%{
+        top:30%;
+
+    }
+
+    80%{
+        top:40%;
+        left:10%;
+    }
+
+
+    100%{
+        top:40%;
+        left:90%;
+    }
+}
+
+
+
+
