@@ -23,13 +23,6 @@ https://github.com/encharm/Font-Awesome-SVG-PNG
     box-sizing: border-box;
 }
 
-.clearfix:after{
-    content:"";
-    display:table;
-    clear:both;
-}
-
-
 /*elements*/
 body{
     padding:0;
@@ -39,12 +32,6 @@ body{
     font-weight: lighter;
     background-color:#f5f5f5 ;
     color:#4d4d4d;
-}
-
-h1{
-    flex-basis: 100%; /*flex-item 1*/
-    font-size: 100px;
-    text-align:center;
 }
 
 img{
@@ -100,6 +87,7 @@ button{
     flex-grow: 1; /*flex-item 3*/
 }
 
+/*classes*/
 .todo{
     display:flex;   /*flex-container 1*/
     flex-wrap:wrap; /*flex-container 1*/
@@ -108,94 +96,107 @@ button{
     margin-top:100px;
 }
 
-.add-btn{
-    padding:0 10px;
-}
-
-.list-del{
-    padding-right: 10px;
-}
-
-/*images*/
-.add-btn img{
-    width:20px;
-    height:12px;
-}
-
-.list-del img{
-    width:12px;
-    height:12px;
-}
-
-/*list*/
-
-
-.list-container{
-   flex-basis: 100%;/*flex-item 1*/
-   display:flex;    /*flex-container 2*/
-   flex-wrap:wrap;  /*flex-container 2*/
-   background-color:#ffffff;
-   border:1px solid: #ededed;
-   box-shadow:1em 1em 1em #ededed,-1em 0 1em #ededed;
-
-}
-
-.list-font{
+.todo__font{
     font-size:24px;
 }
 
-.input-element{
+.todo__title{
+    flex-basis: 100%; /*flex-item 1*/
+    font-size: 100px;
+    text-align:center;
+}
+
+.todo__content{
+    flex-basis: 100%;/*flex-item 1*/
+    display:flex;    /*flex-container 2*/
+    flex-wrap:wrap;  /*flex-container 2*/
+    background-color:#ffffff;
+    border:1px solid #ededed;
+    box-shadow:1em 1em 1em #ededed,-1em 0 1em #ededed;
+
+}
+
+.addtask{
+
+}
+
+.addtask__element{
     flex-basis: 100%; /*flex-item 2*/
     display:flex;     /*flex-container 3*/
     padding:25px 0;
 }
 
-.input-element,
-.list-item{
+.addtask__element,
+.list__item{
     display:flex; /*flex-container 4*/
 
     border-bottom:1px solid #ededed;
 }
 
-list-item{
-   transition: all 0.4s ease-out;
-   opacity:0;
+.addtask__addbtn{
+    padding:0 10px;
 }
 
-
-.show{
-    padding:25px 0;
+.addtask__iconangle{
+    width:20px;
+    height:12px;
 }
 
-.list-item.show{
-    opacity:1;
+.addtask__iconangle:focus{
+    outline:none;
 }
 
-.list-elements{
+.addtask__txt{
+
+}
+
+.todo__list{
     flex-basis: 100%; /*flex-item 2*/
 }
 
-.item-done{
+.todo__list--fade{
+
+}
+
+.list{
+
+}
+
+.list__item{
+    transition: all 0.4s ease-out;
+    opacity:0;
+}
+
+.list__item--show{
+    opacity:1;
+    padding:25px 0;
+}
+
+.list__taskdone{
+    flex-grow: 1;   /*flex-item 4*/
+    padding:0 10px;
+}
+
+.list__txt{
+    flex-basis: 85%; /*flex-item 4*/
+}
+
+.list__txt--done{
     text-decoration: line-through;
     color:#ededed;
 }
 
-.item-txt{
-    flex-basis: 85%; /*flex-item 4*/
-}
-
-.list-del{
+.list__del{
     flex-grow: 1;   /*flex-item 4*/
     padding:0 10px;
 }
 
-.list-check{
-    flex-grow: 1;   /*flex-item 4*/
-    padding:0 10px;
+.list__removeicon{
+    width:12px;
+    height:12px;
 }
 
-
-.footer{
+.todo__footer{
     flex-basis: 100%; /*flex-item 2*/
     padding:15px 10px;
 }
