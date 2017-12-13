@@ -100,7 +100,7 @@ button{
     flex-grow: 1; /*flex-item 3*/
 }
 
-.container{
+.todo{
     display:flex;   /*flex-container 1*/
     flex-wrap:wrap; /*flex-container 1*/
     width:35%;
