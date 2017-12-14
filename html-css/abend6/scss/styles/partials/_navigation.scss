@@ -1,0 +1,21 @@
+.navigation{
+  grid-area: nav;
+  background-color: $bg-color-navi;
+
+  &__list{
+
+  color:pink;
+
+  }
+
+  &__item{
+
+
+  }
+  &__link{
+
+    &--active{
+
+    }
+  }
+}
