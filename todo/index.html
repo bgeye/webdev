@@ -8,48 +8,48 @@
 </head>
 <body>
 
-    <div class="container">
-        <h1>todos</h1>
-        <div class="list-container">
-            <div class="input-element">
-                <button id="add" class="add-btn">
-                    <img  src="img/angle-down.svg">
+    <div class="todo">
+        <h1 class="todo__title">todos</h1>
+        <div class="todo__content addtask">
+            <div class="addtask__element">
+                <button id="addbtn" class="addtask__addbtn">
+                    <img class="addtask__iconangle"  src="img/angle-down.svg">
                 </button>
-                <input type="text" id="addtodo" class="input-txt list-font" name="addtodo" placeholder="What needs to be done?">
+                <input type="text" id="addtxt" class="addtask__txt todo__font" name="addtxt" placeholder="What needs to be done?">
             </div>
-            <ul id="list-el" class="list-elements list-font fade">
-                <li class="list-item show">
-                    <div class="list-check">
-                        <input type="checkbox" id="listcheck" checked>
-                        <label for="listcheck">
+            <ul id="list-element" class="todo__list todo__font list todo__list--fade">
+                <li class="list__item list__item--show">
+                    <div class="list__taskdone">
+                        <input type="checkbox" id="taskdone_1" checked>
+                        <label for="taskdone_1">
                             <span></span>
                         </label>
                     </div>
-                    <span class="item-txt item-done">Milch</span>
-                    <div class="list-del">
+                    <span class="list__txt list__txt--done">Milch</span>
+                    <div class="list__del">
                         <button>
-                            <img  src="img/close.svg">
+                            <img class="list__removeicon" src="img/close.svg">
                         </button>
                     </div>
                 </li>
-                <li class="list-item show">
-                    <div class="list-check">
-                        <input type="checkbox" id="listcheck" >
-                        <label for="listcheck">
+                <li class="list__item list__item--show">
+                    <div class="list__taskdone">
+                        <input type="checkbox" id="taskdone_2" >
+                        <label for="taskdone_2">
                             <span></span>
                         </label>
                     </div>
-                    <span class="item-txt">Wasser</span>
-                    <div class="list-del">
+                    <span class="list__txt">Wasser</span>
+                    <div class="list__del">
                         <button>
-                            <img  src="img/close.svg">
+                            <img class="list__removeicon"  src="img/close.svg">
                         </button>
                     </div>
                 </li>
             </ul>
-            <div class="footer">
+            <footer class="todo__footer">
                 <span>3 items left</span>
-            </div>
+            </footer>
         </div>
     </div>
 <script src="js/todo.js"></script>

@@ -23,13 +23,6 @@ https://github.com/encharm/Font-Awesome-SVG-PNG
     box-sizing: border-box;
 }
 
-.clearfix:after{
-    content:"";
-    display:table;
-    clear:both;
-}
-
-
 /*elements*/
 body{
     padding:0;
@@ -41,153 +34,10 @@ body{
     color:#4d4d4d;
 }
 
-h1{
-    flex-basis: 100%; /*flex-item 1*/
-    font-size: 100px;
-    text-align:center;
-}
-
 img{
     width:100%;
     height:100%;
 }
-
-/*btn*/
-
-button{
-    border:none;
-    background-color:#ffffff;
-    padding:0;
-    margin:0;
-    flex-grow: 1; /*flex-item 3*/
-}
-
-.add-btn{
-    padding:0 10px;
-}
-
-.list-del{
-    padding-right: 10px;
-}
-
-/*images*/
-.add-btn img{
-    width:20px;
-    height:12px;
-}
-
-.list-del img{
-    width:12px;
-    height:12px;
-}
-
-/*list*/
-.container{
-    display:flex;   /*flex-container 1*/
-    flex-wrap:wrap; /*flex-container 1*/
-    width:35%;
-    margin:0 auto;
-    margin-top:100px;
-}
-
-.list-container{
-   flex-basis: 100%;/*flex-item 1*/
-   display:flex;    /*flex-container 2*/
-   flex-wrap:wrap;  /*flex-container 2*/
-   background-color:#ffffff;
-   border:1px solid: #ededed;
-   box-shadow:1em 1em 1em #ededed,-1em 0 1em #ededed;
-
-}
-
-.list-font{
-    font-size:24px;
-}
-
-
-
-.input-element{
-    flex-basis: 100%; /*flex-item 2*/
-    display:flex;     /*flex-container 3*/
-    padding:25px 0;
-}
-
-.input-element,
-.list-item{
-    display:flex; /*flex-container 4*/
-
-    border-bottom:1px solid #ededed;
-}
-
-list-item{
-   transition: all 0.4s ease-out;
-   opacity:0;
-}
-
-
-
-
-.show{
-    padding:25px 0;
-}
-
-.list-item.show{
-    opacity:1;
-}
-
-.list-elements{
-    flex-basis: 100%; /*flex-item 2*/
-}
-
-.item-done{
-    text-decoration: line-through;
-    color:#ededed;
-}
-
-.item-txt{
-    flex-basis: 85%; /*flex-item 4*/
-}
-
-.list-del{
-    flex-grow: 1;   /*flex-item 4*/
-    padding:0 10px;
-}
-
-.list-check{
-    flex-grow: 1;   /*flex-item 4*/
-    padding:0 10px;
-}
-
-
-
-
-/*input fields list*/
-
-input:focus{
-    outline:none;
-   /* animation: anim-shadow 0.3s forwards;*/
-}
-/*
-
-
-@-webkit-keyframes anim-shadow {
-	to {
-		box-shadow: 0px 0px 100px 50px tomato;
-    	opacity: 0;
-	}
-}
-
-@keyframes anim-shadow {
-	to {
-		box-shadow: 0px 0px 100px 50px tomato;
-    	opacity: 0;
-	}
-}
-
-*/
-
-
-
 
 input::placeholder{
     font-style:italic;
@@ -224,9 +74,129 @@ input[type="checkbox"]:checked + label span{
     background: url(../img/chck_inactive.svg)0px center no-repeat;
 }
 
+input:focus{
+    outline:none;
+    /* animation: anim-shadow 0.3s forwards;*/
+}
 
+button{
+    border:none;
+    background-color:#ffffff;
+    padding:0;
+    margin:0;
+    flex-grow: 1; /*flex-item 3*/
+}
 
-.footer{
+/*classes*/
+.todo{
+    display:flex;   /*flex-container 1*/
+    flex-wrap:wrap; /*flex-container 1*/
+    width:35%;
+    margin:0 auto;
+    margin-top:100px;
+}
+
+.todo__font{
+    font-size:24px;
+}
+
+.todo__title{
+    flex-basis: 100%; /*flex-item 1*/
+    font-size: 100px;
+    text-align:center;
+}
+
+.todo__content{
+    flex-basis: 100%;/*flex-item 1*/
+    display:flex;    /*flex-container 2*/
+    flex-wrap:wrap;  /*flex-container 2*/
+    background-color:#ffffff;
+    border:1px solid #ededed;
+    box-shadow:1em 1em 1em #ededed,-1em 0 1em #ededed;
+
+}
+
+.addtask{
+
+}
+
+.addtask__element{
+    flex-basis: 100%; /*flex-item 2*/
+    display:flex;     /*flex-container 3*/
+    padding:25px 0;
+}
+
+.addtask__element,
+.list__item{
+    display:flex; /*flex-container 4*/
+
+    border-bottom:1px solid #ededed;
+}
+
+.addtask__addbtn{
+    padding:0 10px;
+}
+
+.addtask__iconangle{
+    width:20px;
+    height:12px;
+}
+
+.addtask__iconangle:focus{
+    outline:none;
+}
+
+.addtask__txt{
+
+}
+
+.todo__list{
+    flex-basis: 100%; /*flex-item 2*/
+}
+
+.todo__list--fade{
+
+}
+
+.list{
+
+}
+
+.list__item{
+    transition: all 0.4s ease-out;
+    opacity:0;
+}
+
+.list__item--show{
+    opacity:1;
+    padding:25px 0;
+}
+
+.list__taskdone{
+    flex-grow: 1;   /*flex-item 4*/
+    padding:0 10px;
+}
+
+.list__txt{
+    flex-basis: 85%; /*flex-item 4*/
+}
+
+.list__txt--done{
+    text-decoration: line-through;
+    color:#ededed;
+}
+
+.list__del{
+    flex-grow: 1;   /*flex-item 4*/
+    padding:0 10px;
+}
+
+.list__removeicon{
+    width:12px;
+    height:12px;
+}
+
+.todo__footer{
     flex-basis: 100%; /*flex-item 2*/
     padding:15px 10px;
 }
