@@ -12,13 +12,13 @@
         <h1>todos</h1>
         <div class="list-container">
             <div class="input-element">
-                <button class="angle-btn">
+                <button id="add" class="add-btn">
                     <img  src="img/angle-down.svg">
                 </button>
                 <input type="text" id="addtodo" class="input-txt list-font" name="addtodo" placeholder="What needs to be done?">
             </div>
-            <ul class="list-elements list-font">
-                <li class="list-item">
+            <ul id="list-el" class="list-elements list-font fade">
+                <li class="list-item show">
                     <div class="list-check">
                         <input type="checkbox" id="listcheck" checked>
                         <label for="listcheck">
@@ -32,7 +32,7 @@
                         </button>
                     </div>
                 </li>
-                <li class="list-item">
+                <li class="list-item show">
                     <div class="list-check">
                         <input type="checkbox" id="listcheck" >
                         <label for="listcheck">
@@ -52,6 +52,6 @@
             </div>
         </div>
     </div>
-
+<script src="js/todo.js"></script>
 </body>
 </html>
