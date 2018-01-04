@@ -1,0 +1,43 @@
+/**
+*-----------FORM-----------
+*/
+
+input::placeholder{
+  font-style:italic;
+}
+
+label{
+  cursor:pointer;
+}
+
+input[type="text"]{
+  border:none;
+  flex-basis:94%; /*flex-item 3*/
+  padding-right:10px;
+  color:#4d4d4d;
+}
+
+input[type="text"]:active{
+  border:none;
+}
+
+input[type="checkbox"]{
+  display:none;
+}
+
+input[type="checkbox"] + label span{
+  display:inline-block;
+  vertical-align:middle;
+  width:25px;
+  height:25px;
+  background: url(../../img/chck_active.svg)0px center no-repeat;
+}
+
+input[type="checkbox"]:checked + label span{
+  background: url(../../img/chck_inactive.svg)0px center no-repeat;
+}
+
+input:focus{
+  outline:none;
+  /* animation: anim-shadow 0.3s forwards;*/
+}

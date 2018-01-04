@@ -42,26 +42,12 @@ table {
 /**
  * Components
  */
-/*styles for project td list*/
-/*
-Hintergrund: #f5f5f5
-Grau für Linie: #ededed
-Text: #4d4d4d
-Rot: #af2f2f
-Weiss: #ffffff
-Schriftart: “Helvetica Neue”, Helvetica, Arial, sans-serif;
-Standard-Schriftgrösse: 14px
-
-
-#icons
-https://github.com/encharm/Font-Awesome-SVG-PNG
-
+/**
+*-----------GENERAL-----------
 */
-/*general*/
 * {
   box-sizing: border-box; }
 
-/*elements*/
 body {
   padding: 0;
   margin: 0;
@@ -71,10 +57,21 @@ body {
   background-color: #f5f5f5;
   color: #4d4d4d; }
 
-img {
+.img_base {
   width: 100%;
   height: 100%; }
 
+.btn {
+  border: none;
+  background-color: #ffffff;
+  padding: 0;
+  margin: 0;
+  flex-grow: 1;
+  /*flex-item 3*/ }
+
+/**
+*-----------FORM-----------
+*/
 input::placeholder {
   font-style: italic; }
 
@@ -108,15 +105,9 @@ input:focus {
   outline: none;
   /* animation: anim-shadow 0.3s forwards;*/ }
 
-button {
-  border: none;
-  background-color: #ffffff;
-  padding: 0;
-  margin: 0;
-  flex-grow: 1;
-  /*flex-item 3*/ }
-
-/*classes*/
+/**
+*-----------LIST-----------
+*/
 .todo {
   display: flex;
   /*flex-container 1*/
@@ -125,37 +116,38 @@ button {
   width: 35%;
   margin: 0 auto;
   margin-top: 100px; }
-
-.todo__font {
-  font-size: 24px; }
-
-.todo__title {
-  flex-basis: 100%;
-  /*flex-item 1*/
-  font-size: 100px;
-  text-align: center; }
-
-.todo__content {
-  flex-basis: 100%;
-  /*flex-item 1*/
-  display: flex;
-  /*flex-container 2*/
-  flex-wrap: wrap;
-  /*flex-container 2*/
-  background-color: #ffffff;
-  border: 1px solid #ededed;
-  box-shadow: 1em 1em 1em #ededed,-1em 0 1em #ededed; }
+  .todo__font {
+    font-size: 24px; }
+  .todo__title {
+    flex-basis: 100%;
+    /*flex-item 1*/
+    font-size: 100px;
+    text-align: center; }
+  .todo__content {
+    flex-basis: 100%;
+    /*flex-item 1*/
+    display: flex;
+    /*flex-container 2*/
+    flex-wrap: wrap;
+    /*flex-container 2*/
+    background-color: #ffffff;
+    border: 1px solid #ededed;
+    box-shadow: 1em 1em 1em #ededed,-1em 0 1em #ededed; }
+  .todo__list {
+    flex-basis: 100%;
+    /*flex-item 2*/ }
+  .todo__footer {
+    flex-basis: 100%;
+    /*flex-item 2*/
+    padding: 15px 10px; }
 
 .addtask__element {
   flex-basis: 100%;
   /*flex-item 2*/
   display: flex;
   /*flex-container 3*/
-  padding: 25px 0; }
-
-.addtask__element,
-.list__item {
-  display: flex;
+  padding: 25px 0;
+  /*display:flex;*/
   /*flex-container 4*/
   border-bottom: 1px solid #ededed; }
 
@@ -169,11 +161,10 @@ button {
 .addtask__iconangle:focus {
   outline: none; }
 
-.todo__list {
-  flex-basis: 100%;
-  /*flex-item 2*/ }
-
 .list__item {
+  display: flex;
+  /*flex-container 4*/
+  border-bottom: 1px solid #ededed;
   transition: all 0.4s ease-out;
   opacity: 0; }
 
@@ -203,7 +194,19 @@ button {
   width: 12px;
   height: 12px; }
 
-.todo__footer {
-  flex-basis: 100%;
-  /*flex-item 2*/
-  padding: 15px 10px; }
+/*-----------ADDITIONAL INFO-----------*/
+/*
+Hintergrund: #f5f5f5
+Grau für Linie: #ededed
+Text: #4d4d4d
+Rot: #af2f2f
+Weiss: #ffffff
+Schriftart: “Helvetica Neue”, Helvetica, Arial, sans-serif;
+Standard-Schriftgrösse: 14px
+
+
+#icons
+https://github.com/encharm/Font-Awesome-SVG-PNG
+
+*/
+/*-----------ADDITIONAL INFO-----------*/
