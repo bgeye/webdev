@@ -49,6 +49,9 @@ table {
   box-sizing: border-box; }
 
 body {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   padding: 0;
   margin: 0;
   font-family: “Helvetica Neue”, Helvetica, Arial, sans-serif;
@@ -113,8 +116,7 @@ input:focus {
   /*flex-container 1*/
   flex-wrap: wrap;
   /*flex-container 1*/
-  width: 35%;
-  margin: 0 auto;
+  width: 500px;
   margin-top: 100px; }
   .todo__font {
     font-size: 24px; }
