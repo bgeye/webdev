@@ -1,0 +1,33 @@
+
+@mixin triangle($type,$color,$width){
+
+
+  @if($type=='big'){
+
+      width:0;
+      height:0;
+      border-left:$width solid transparent;
+      border-right:$width solid transparent;
+      border-bottom: $width $color;
+  }
+
+  @if($type=='medium'){
+
+    width:0;
+    height:0;
+    border-left:$width solid transparent;
+    border-right:$width solid transparent;
+    border-bottom: $width $color;
+  }
+
+  @if($type=='small'){
+
+    width:0;
+    height:0;
+    border-left:$width solid transparent;
+    border-right:$width solid transparent;
+    border-bottom: $width $color;
+  }
+
+
+}

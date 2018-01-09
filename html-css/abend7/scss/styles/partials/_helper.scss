@@ -1,0 +1,8 @@
+
+@mixin transition($definitions...){ /*in call no commas necessary to use like a normal transition property*/
+  -webkit-transition:$definitions;
+  -moz-transition: $definitions;
+  -ms-transition:$definitions;
+  -o-transition:$definitions;
+  transition:$definitions;
+}
