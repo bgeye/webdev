@@ -59,26 +59,28 @@ footer{
 
 
 
-@include mobile(phone){
 
-}
 
 .circle{
-    width:50px;
+    width:500px;
     height:25px;
-    @include mobile(tablet){
+    @include mobile(phone){
         width:25px;
     }
-}
+    @include mobile(tablet){
+        width:100px;
+    }
+    @include mobile(desktop){
 
-
-
-@include mobile(desktop){
-    .circle{
-        width:150px;
+        width:160px;
         height:125px;
+
     }
 }
+
+
+
+
 
 .big-arrow{
     @include triangle(big,tomato,30px);

@@ -68,25 +68,37 @@ footer {
   transition: width 0.4s ease-in;
   /*no commas necessary!!!*/ }
 
-@media only screen and (max-width: 480px) {
-  .cube {
-    display: none; } }
-
 .circle {
-  width: 50px;
-  height: 25px; }
+  width: 500px;
+  height: 25px;
+  /*
+  $phone = 480px;
+  $tablet = 768px;
+  $desktop = 1200px;
+  */
+  /*
+  $phone = 480px;
+  $tablet = 768px;
+  $desktop = 1200px;
+  */
+  /*
+  $phone = 480px;
+  $tablet = 768px;
+  $desktop = 1200px;
+  */ }
+  @media only screen and (max-width: 480px) {
+    .circle {
+      background-color: grey;
+      width: 25px; } }
   @media only screen and (max-width: 768px) {
-    .circle .cube {
-      width: 250px; }
-    .circle .hide {
-      display: none; } }
-
-@media only screen and (max-width: 1200px) {
-  .cube {
-    width: 500px; }
-  .circle {
-    width: 150px;
-    height: 125px; } }
+    .circle {
+      background-color: grey;
+      width: 100px; } }
+  @media only screen and (max-width: 1200px) {
+    .circle {
+      background-color: grey;
+      width: 160px;
+      height: 125px; } }
 
 .big-arrow {
   width: 0;
