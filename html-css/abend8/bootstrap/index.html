@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>exercise 1 grid</title>
+    <link href="styles/main.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+<div class="container">
+    <div class="pos-f-t">
+        <div class="collapse" id="navbarToggleExternalContent">
+            <div class="bg-dark p-4">
+                <h4 class="text-white">Collapsed content</h4>
+                <span class="text-muted">Toggleable via the navbar brand.</span>
+            </div>
+        </div>
+        <nav class="navbar navbar-dark bg-dark">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </nav>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="jumbotron jumbotron-fluid">
+                <div class="container">
+                    <h1 class="display-4">todo</h1>
+                    <p class="lead">there's a lot todo</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            left
+        </div>
+        <div class="col-md-6">
+                <div class="list-group" id="list-tab" role="tablist">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" aria-label="Text input with checkbox">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="button">add</button>
+                        </div>
+                    </div>
+                    <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">
+                        <div class="form-inline">
+                            <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                                <input type="checkbox" class="custom-control-input" id="customControlInline">
+                                <label class="custom-control-label" for="customControlInline">task1</label>
+                            </div>
+                            <button type="submit" class="btn btn-primary my-1">x</button>
+                        </div>
+                    </a>
+                    <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">
+                        <div class="form-inline">
+                            <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                                <input type="checkbox" class="custom-control-input" id="customControlInline">
+                                <label class="custom-control-label" for="customControlInline">task2</label>
+                            </div>
+                            <button type="submit" class="btn btn-primary my-1">x</button>
+                        </div>
+                    </a>
+                    <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">
+                        <div class="form-inline">
+                            <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                                <input type="checkbox" class="custom-control-input" id="customControlInline">
+                                <label class="custom-control-label" for="customControlInline">task3</label>
+                            </div>
+                            <button type="submit" class="btn btn-primary my-1">x</button>
+                        </div>
+                    </a>
+                </div>
+        </div>
+        <div class="col-md-3">
+            right
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+
+        </div>
+        <div class="col-md-6">
+            foot
+        </div>
+        <div class="col-md-3">
+
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
