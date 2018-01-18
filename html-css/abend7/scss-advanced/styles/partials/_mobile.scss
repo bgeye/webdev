@@ -1,33 +1,33 @@
 
 
 
-
+/*https://zellwk.com/blog/how-to-write-mobile-first-css/*/
 @mixin mobile($device){
-  /*
-  $phone = 480px;
-  $tablet = 768px;
-  $desktop = 1200px;
-  */
+  /*$phone: 480px; not used!!!*/
+  $tablet: 480px;
+  $desktop: 768px;
 
-  @if($device == 'phone'){
-    @media only screen and (max-width: 480px) {
-      background-color: grey;
-      @content;
-    }
-  }
 
+  /*mobile first the values are the base then tablet has the min-width of the phone*/
+
+  //@if($device == 'phone'){
+  //  @media only screen and (min-width: $phone) {
+  //    background-color: grey;
+  //    @content;
+  //  }
+  //}
 
   @if($device == 'tablet'){
-    @media only screen and (max-width: 768px){
-      background-color: grey;
+    @media only screen and (min-width: $tablet){
+      background-color: blue;
       @content;
     }
   }
 
   @if($device == 'desktop'){
-    @media only screen and (max-width: 1200px) {
+    @media only screen and (max-width: $desktop) {
 
-      background-color: grey;
+      background-color: red;
 
       @content;
     }

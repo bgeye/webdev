@@ -10,6 +10,7 @@
 @import "partials/helper";
 @import "partials/triangle";
 @import "partials/mobile";
+@import "partials/clearfix";
 
 
 *{
@@ -49,6 +50,9 @@ footer{
     background-color: $bg-color-footer;
 }
 
+
+/*excercise 1*/
+
 .cube{
     @include transition(all 2s infinite);
 }
@@ -58,49 +62,54 @@ footer{
 }
 
 
-
-
+/*exercise 2*/
 
 .circle{
-    width:500px;
+    width:200px;
     height:25px;
-    @include mobile(phone){
-        width:25px;
-    }
+
+    /*media query here for overview about normal and responsive declarations*/
     @include mobile(tablet){
-        width:100px;
+
+        width:500px;
     }
     @include mobile(desktop){
 
-        width:160px;
-        height:125px;
+        width:800px;
 
     }
 }
 
 
 
-
+/*exercise 3*/
 
 .big-arrow{
-    @include triangle(big,tomato,30px);
+    @include triangle(big,tomato,150px);
 }
 
 .medium-arrow{
-    @include triangle(big,lightblue,25px);
+    @include triangle(medium,lightblue,100px);
 }
 
 .small-arrow{
-    @include triangle(big,lightgreen,10px);
+    @include triangle(small,lightgreen,50px);
+}
+
+
+/*exercise 4*/
+
+.foo{
+    @include clear();
 }
 
 
 
 
-
+/*
 @media(max-width: 768px){
     .layout{
-        grid-template-rows: 30px 250px 40px /*40px*/ auto 20px;
+        grid-template-rows: 30px 250px 40px auto 20px;
         grid-template-columns: 350px auto 350px;
     }
 
@@ -121,10 +130,7 @@ footer{
     }
 
 }
-
-
-
-
+*/
 
 
 
