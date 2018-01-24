@@ -1,0 +1,57 @@
+<html>
+  <head></head>
+  <body>
+    <script>
+      /* Aufgabe:
+       * Nimm den unten aufgeführten Array von Objekten und gib nur die Vor- und Nachnamen der Kunden aus.
+       * Vor dem Vornamen soll jeweils die korrekte Anrede ausgegeben werden, basierend auf dem Geschlecht.
+       * Benötigte Werkzeuge: Konsole, Schlaufe, If-Bedingung.
+       * Überleg dir zuerst Schritt für Schritt, was du alles machen musst, um zum Ziel zu kommen und was du dafür benötigst.
+
+       * Erwartete Ausgabe auf der Konsole:
+        Herr Hans Meier
+        Frau Janine Müller
+        Frau Andrea Frei
+        Herr Timo Fritsche
+        Herr Bart Bellon
+
+       * Zusatzaufgabe (für schnellere):
+       * - Wie kannst du die Aufgabe noch lösen? Studiere dazu reduce(), map() auf MDN. -> how to?
+       * - Sortiere die Ausgabe nach dem Alter der Kunden
+       */
+
+      var kunden = [
+        {firstname: "Hans", lastname: "Meier", phoneNumber: "0711234567", age: 35, sex: "m"},
+        {firstname: "Janine", lastname: "Müller", phoneNumber: "0711234566", age: 55, sex: "f"},
+        {firstname: "Andrea", lastname: "Frei", phoneNumber: "0711234568", age: 23, sex: "f"},
+        {firstname: "Timo", lastname: "Fritsche", phoneNumber: "0711234569", age: 19, sex: "m"},
+        {firstname: "Bart", lastname: "Bellon", phoneNumber: "0711234523", age: 27, sex: "m"},
+      ];
+
+      //https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
+      kunden.sort(function(a,b){
+          if(a.age > b.age){
+              return 1;
+          }
+          if(a.age < b.age){
+              return -1;
+          }
+          else{
+              return 0;
+          }
+
+      });
+
+      for(var i = 0;i < kunden.length;i++){
+          if(kunden[i].sex === "m"){
+              console.log("Herr " + kunden[i].firstname + ' ' + kunden[i].lastname + ' ' + kunden[i].age);
+          }else{
+              console.log("Frau " + kunden[i].firstname + ' ' + kunden[i].lastname + ' ' + kunden[i].age);
+          }
+      }
+
+
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,59 @@
+<html>
+  <head></head>
+  <body>
+    <script>
+      /* Aufgabe:
+       * Nimm den unten aufgeführten Array und gib nur die geraden Zahlen in der Konsole aus.
+       * Benötigte Werkzeuge: Schlaufe, Konsole, If-Bedingung, Modulo.
+       * Überleg dir zuerst Schritt für Schritt, was du alles machen musst, um zum Ziel zu kommen und was du dafür benötigst.
+
+       * Zusatzaufgabe (für schnellere):
+       * Wie kannst du die Aufgabe noch lösen? Studiere dazu filter() und map() auf MDN.
+       */
+
+       var zahlen = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20];
+      console.log("------------------only loop---------------------");
+       //normale Lösung
+       for(var i = 0; i < zahlen.length;i++){
+           if(zahlen[i]%2===0){
+               console.log(zahlen[i]);
+           }
+       }
+
+
+       /*-------------------filter()---------------------*/
+
+       console.log("-------------------filter()---------------------");
+
+      //https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
+
+      function checkEven(a){
+           return a % 2 === 0; //no if() necessary because this case returns true
+      }
+
+      var even = zahlen.filter(checkEven); //new array only with values they return true from callback function
+
+      for(var i = 0; i < even.length;i++){
+         console.log(even[i]);
+      }
+
+      /*-------------------map()---------------------*/
+      console.log("-------------------map()---------------------");
+      //new array with result of the check in the callback function -> all elements not only true elements like in filter()
+      //https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Array/map
+      function checkNumbers(num){
+          return num % 2 === 0;
+
+      }
+
+      var zahlenNew = zahlen.map(checkNumbers);
+
+      for(var i = 0; i < zahlenNew.length;i++){
+          console.log(zahlenNew[i]);
+      }
+
+
+
+    </script>
+  </body>
+</html>

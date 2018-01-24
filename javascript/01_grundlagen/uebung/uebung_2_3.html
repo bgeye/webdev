@@ -1,0 +1,71 @@
+<html>
+  <head></head>
+  <body>
+    <script>
+      /* Aufgabe:
+       * Nimm den unten aufgeführten Array von Objekten und Berechne die Summe und den Durchschnitt des Alters der Kunden.
+       * Der Altersdurchschnitt soll einmal global und 1x pro Geschlecht ausgegeben werden.
+       * Überleg dir zuerst Schritt für Schritt, was du alles machen musst, um zum Ziel zu kommen und was du dafür benötigst.
+       *
+       * summe with reduce()
+
+       * Erwartete Ausgabe auf der Konsole:
+        Summe des Alters aller Kunden: 159 Jahre
+        Durchschnittsalter der Kunden: 31.8 Jahre
+        Durchschnittsalter der Frauen: 39 Jahre
+        Durchschnittsalter der Männer: 27 Jahre
+       */
+
+      var kunden = [
+        {firstname: "Hans", lastname: "Meier", phoneNumber: "0711234567", age: 35, sex: "m"},
+        {firstname: "Janine", lastname: "Müller", phoneNumber: "0711234566", age: 55, sex: "f"},
+        {firstname: "Andrea", lastname: "Frei", phoneNumber: "0711234568", age: 23, sex: "f"},
+        {firstname: "Timo", lastname: "Fritsche", phoneNumber: "0711234569", age: 19, sex: "m"},
+        {firstname: "Bart", lastname: "Bellon", phoneNumber: "0711234523", age: 27, sex: "m"},
+      ];
+
+      var ageClients = [];
+      var ageFemale = [];
+      var ageMale = [];
+      var sumClients = 0;//important to assign here a 0
+      var sumFemale = 0;
+      var sumMale = 0;
+      var crossClients = 0;
+      var crossFemale = 0;
+      var crossMale = 0;
+      var countFemale = 0;
+      var countMale = 0;
+
+      function sumAge(acc,val){
+        return acc + val;                 //addition of ages callback function
+      }
+      for(var i = 0;i < kunden.length;i++){
+
+          ageClients.push(kunden[i].age); //assign age of clients to array
+          if(kunden[i].sex === "m"){
+              ageMale.push(kunden[i].age);
+              countMale += 1;
+          }else{
+              ageFemale.push(kunden[i].age);
+              countFemale += 1;
+          }
+
+      }
+      sumClients = ageClients.reduce(sumAge);
+      sumFemale = ageFemale.reduce(sumAge);
+      sumMale = ageMale.reduce(sumAge);
+
+      crossClients = sumClients / kunden.length;
+      crossFemale = sumFemale / countFemale;
+      crossMale = sumMale / countMale;
+
+      console.log("Summe des Alters aller Kunden: "+ sumClients + " Jahre");
+      console.log("Durchschnittsalter der Kunden: " + crossClients + " Jahre");
+      console.log("Durchschnittsalter der Frauen: " + crossFemale + " Jahre");
+      console.log("Durchschnittsalter der Männer: " + crossMale + " Jahre");
+
+      /*---------------------------2nd solution???---------------------------*/
+
+    </script>
+  </body>
+</html>

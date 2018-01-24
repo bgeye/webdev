@@ -1,0 +1,112 @@
+<html>
+  <head></head>
+  <body>
+    <script>
+      /* Aufgabe:
+       * Nimm den unten aufgeführten mehrdimensionalen Array und gib nur die ELemente aus, die Zahlen sind.
+       * Benötigte Werkzeuge: Konsole, verschachtelte Schlaufen, If-Bedingung, Typeof.
+       * Überleg dir zuerst Schritt für Schritt, was du alles machen musst, um zum Ziel zu kommen und was du dafür benötigst.
+
+       * Erwartete Ausgabe auf der Konsole:
+          1
+          12
+          2
+          11
+          3
+          10
+          4
+          9
+          5
+          8
+          6
+          7
+          6
+          7
+          5
+          8
+          4
+          9
+          3
+          10
+          2
+          11
+          1
+          12
+
+       * Zusatzaufgabe (für schnellere):
+       * Wie kannst du die Aufgabe noch kürzer lösen? Studiere dazu filter(), map() auf MDN.
+       */
+
+      var zahlenUndBuchstaben = [
+        [1, "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", 12],
+        ["a", 2, "c", "d", "e", "f", "g", "h", "i", "j", 11, "l"],
+        ["a", "b", 3, "d", "e", "f", "g", "h", "i", 10, "k", "l"],
+        ["a", "b", "c", 4, "e", "f", "g", "h", 9, "j", "k", "l"],
+        ["a", "b", "c", "d", 5, "f", "g", 8, "i", "j", "k", "l"],
+        ["a", "b", "c", "d", "e", 6, 7, "h", "i", "j", "k", "l"],
+        ["a", "b", "c", "d", "e", 6, 7, "h", "i", "j", "k", "l"],
+        ["a", "b", "c", "d", 5, "f", "g", 8, "i", "j", "k", "l"],
+        ["a", "b", "c", 4, "e", "f", "g", "h", 9, "j", "k", "l"],
+        ["a", "b", 3, "d", "e", "f", "g", "h", "i", 10, "k", "l"],
+        ["a", 2, "c", "d", "e", "f", "g", "h", "i", "j", 11, "l"],
+        [1, "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", 12],
+      ];
+      // console.log(zahlenUndBuchstaben);
+      // for(var i = 0;i < zahlenUndBuchstaben.length;i++){
+      //
+      //     for(var x = 0;x < zahlenUndBuchstaben[i].length;x++){
+      //         if(typeof zahlenUndBuchstaben[i][x] === 'number'){
+      //
+      //             console.log(zahlenUndBuchstaben[i][x]);
+      //         }
+      //
+      //     }
+      //
+      // }
+
+      /*-------------------filter()------------------------*/
+      var onlyNumber;
+      function checkType(num){
+      //console.log(num === 'number');
+
+      return num;
+
+
+      }
+      // function showNumbers(){
+      //     for(var i = 0;i < onlyNumber;i++){
+      //         console.log(onlyNumber[i]);
+      //     }
+      // }
+
+      for(var i = 0;i < zahlenUndBuchstaben.length;i++){
+          onlyNumber = zahlenUndBuchstaben[i].filter(checkType);
+
+
+      }
+      console.log(onlyNumber);
+
+
+      //showNumbers();
+
+
+      /*-------------------filter() Vol 2------------------------*/
+      //
+      // var onlyNumber=[];
+      // function checkType(num){
+      //     console.log(num);
+      //     for(var i = 0;i < num.length;i++){
+      //         return num[i] === 'number';
+      //     }
+      //     //return num === 'number';
+      // }
+      // onlyNumber = zahlenUndBuchstaben.filter(checkType);
+      // for(var i = 0;i < onlyNumber.length;i++){
+      //
+      //     console.log(onlyNumber[i]);
+      //
+      // }
+
+    </script>
+  </body>
+</html>
