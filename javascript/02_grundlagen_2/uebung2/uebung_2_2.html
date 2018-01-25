@@ -1,0 +1,35 @@
+<html>
+  <head></head>
+  <body>
+    <script>
+      /* Aufgabe:
+       * a) Bau eine Funktion, genannt searchByName() welche einen Parameter name hat,
+       *    und dir das Objekt mit dem Übergebenen namen im Array sucht und zurück gibt.
+            Um es zu testen, gib den Rückgabewert wie unten angezeigt auf der Konsole aus.
+       *    Beispiel: console.log(searchByName("Bart")) => {name: "Bart", age: 10, sex: 'm'}
+
+       * b) Bau nun eine Allgemeine Version von searchByName genannt searchBy. Anstatt nur nach dem Namen zu suchen,
+            soll das Attribut, auf dem gesucht werden soll, auch übergeben werden können.
+            Hinweis: KEIN riesiges If ElseIf Konstruct mit allen möglich Attributen machen,
+            da es sonst nicht für andere Objekte funktioniert
+            Beispiel: console.log(searchBy("name", "Bart")) => {name: "Bart", age: 10, sex: 'm'}
+            Beispiel: console.log(searchBy("age", 34)) => {name: "Marge", age: 34, sex: 'w'}
+
+            Passe anschliessend deine Methode searchByName so an, dass sie searchBy verwendet.
+       *
+      */
+
+       var simpsonsObj = [
+         {name: "Bart", age: 10, sex: 'm'},
+         {name: "Homer", age: 36, sex: 'm'},
+         {name: "Lisa", age: 8, sex: 'w'},
+         {name: "Marge", age: 34, sex: 'w'},
+         {name: "Maggie", age: 1, sex: 'w'},
+         {name: "Hugo", age: 10, sex: 'm'},
+       ];
+
+    </script>
+  </body>
+</html>
+
+
