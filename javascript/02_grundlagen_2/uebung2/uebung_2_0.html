@@ -10,6 +10,23 @@
        * Beispiel: console.log(durchschnitt(1, 2, 3, 4, 8, 9, 10, 11)) => 6
        */
 
+      function durchschnitt(){
+          var durchschnitt = 0;
+          for(var i = 0;i < arguments.length;i++){
+
+              durchschnitt += arguments[i];
+
+          }
+          console.log(durchschnitt / arguments.length);
+          console.log(arguments);
+      }
+
+
+      durchschnitt(1,2,3,4);
+      durchschnitt(1,2,3,4,8,9,10,11);
+
+
+
     </script>
   </body>
 </html>

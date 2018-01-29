@@ -27,6 +27,34 @@
          {name: "Maggie", age: 1, sex: 'w'},
          {name: "Hugo", age: 10, sex: 'm'},
        ];
+       /*---------------------a------------------------*/
+       function searchByName(name){
+           for(var i = 0;i < simpsonsObj.length;i++){
+               if(simpsonsObj[i].name==name){
+                   return simpsonsObj[i];
+               }
+           }
+
+       }
+
+       //console.log(searchByName("Bart"));
+
+       /*---------------------b------------------------*/
+
+      https://www.linkedin.com/pulse/javascript-find-object-array-based-objects-property-rafael
+
+       function searchBy(attr,val){
+           var result = [];
+           for(var i = 0;i < simpsonsObj.length;i++){
+               if(simpsonsObj[i][attr]==val){
+                   result.push(simpsonsObj[i]);
+               }
+           }
+           return result;
+       }
+
+       console.log(searchBy("age",10));
+
 
     </script>
   </body>

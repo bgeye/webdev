@@ -16,6 +16,35 @@
       */
 
       var zahlen = [1,2,3,4,5,6];
+      var result = 0;
+
+      function summe(array){
+          result = array.reduce(function(start,num){
+              return start + num;
+          },0);
+
+      }
+
+      function durchschnitt(array){
+          result = array.reduce(function(start,num){
+              return start + num
+          },0);
+          result = result / array.length;
+      }
+
+      function maximum(array){
+          result = Math.max(...array);
+      }
+
+      function rechner(rechnungsFunktion,array){
+
+          rechnungsFunktion(array); //rechnungsFunktion is summe, durchschnitt or maximum / array is zahlen
+          return result;
+      }
+
+      console.log(rechner(summe, zahlen));
+      console.log(rechner(durchschnitt, zahlen));
+      console.log(rechner(maximum, zahlen));
 
     </script>
   </body>

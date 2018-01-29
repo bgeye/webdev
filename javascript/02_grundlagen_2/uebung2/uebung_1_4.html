@@ -16,6 +16,15 @@
          {name: "Hugo", age: 10, sex: 'm'},
        ];
 
+       function getSum(a,b){   //this function counts the last result + the next value.
+
+           return a + b.age;
+       }
+
+       //var ageSum = 0;
+       var ageSum = simpsonsObj.reduce(getSum,0); //this function needs to start with 0 thats why I give it 0
+       console.log(ageSum);
+
     </script>
   </body>
 </html>

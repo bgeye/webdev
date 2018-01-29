@@ -16,6 +16,29 @@
          {name: "Hugo", age: 10, sex: 'm'},
        ];
 
+       /*-------------------a-----------------------*/
+       function checkf(num){
+           return num.sex === "w";
+       }
+       var fsimps = simpsonsObj.filter(checkf);
+
+       function checkm(num){
+          return num.sex === "m";
+       }
+
+       var msimps = simpsonsObj.filter(checkm);
+       console.log(fsimps);
+       console.log(msimps);
+
+
+      /*-------------------b-----------------------*/
+      function checkAge(num){
+          return num.age >=18;
+      }
+
+      var over18 = simpsonsObj.filter(checkAge)
+      console.log(over18);
+
     </script>
   </body>
 </html>

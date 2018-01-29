@@ -12,6 +12,23 @@
 
        var numberGroups = [[[1, 2], [3, [4, 5]]], 3, 4, 5, [6, 7, [8, 9, 10]], [11, 12, 13, 14, 15]];
 
+      // http://blog.benoitvallon.com/tips/flattening-arrays-in-javascript/
+      // https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Array/isArray
+
+       function flattenArrayRecursive(array){
+           if(!Array.isArray(array)){
+              return [array];
+           }
+
+           var flattenarray = [];
+           for(var i = 0;i < array.length;i++){
+               flattenarray = flattenarray.concat(flattenArrayRecursive(array[i]));
+           }
+           return flattenarray;
+       }
+
+       console.log(flattenArrayRecursive(numberGroups));
+
     </script>
   </body>
 </html>
