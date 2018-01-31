@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <style>
+      body {
+        background-color: blue;
+      }
+      .red {
+        background-color: red;
+      }
+    </style>
+
+  </head>
+  <body>
+    <script>
+      /* Aufgabe:
+       * Wechsle die Hintergrundfarbe des Bodys alle 500 milisekunden zwischen rot und blau
+       * Tipps: du benötigst dazu eine CSS-Klasse, classlist.toggle und die Interval funktion.
+       */
+
+      var interval = window.setInterval(callback,500);
+      function callback(){
+          var bodybg = document.querySelector('body');
+          bodybg.classList.toggle('red');
+      }
+
+    </script>
+
+  </body>
+</html>

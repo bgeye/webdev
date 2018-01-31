@@ -1,0 +1,86 @@
+<html>
+  <head></head>
+  <body>
+    <input type="text" class="txt"/>
+    <div id="keyup"></div>
+    <div id="keydown"></div>
+    <div id="change"></div>
+    <div id="input"></div>
+    <div id="blur"></div>
+    <div id="focus"></div>
+    <script>
+      /* Aufgabe:
+       * Bau ein Eingabfeld, welches bei jeder Änderung (Texteingabe),
+       * den eingegebenen Wert, abhängig vom Event, in ein separates DIV schreibt.
+       * Also beim change Event, den Wert des Eingabefeldes ins div mit der id #change schreiben
+       * Beim blur Event, den Wert des Eingabefeldes ins div mit der id #blur schreiben
+        ....
+
+       * Dadurch siehst du, wie sich die unterschiedlichen Events verhalten und welcher Event der
+       * Beste für deinen Zweck ist
+       * Welcher Event ist der Beste für die Texteingabe eines Benutzers?
+      */
+
+      var inputTxt = document.querySelector('.txt');
+
+
+      /*----------------------keyup---------------------*/
+      //if keydown
+      var keyUp = document.querySelector('#keyup');
+      inputTxt.addEventListener('keyup',setUp);
+      function setUp(){
+          console.log('keyup');
+          keyUp.innerText = inputTxt.value;
+      }
+
+      /*----------------------keydown---------------------*/
+      //if keydown
+      var keyDown = document.querySelector('#keydown');
+      inputTxt.addEventListener('keydown',setDown);
+      function setDown(){
+          console.log('keydown');
+          keyDown.innerText = inputTxt.value;
+      }
+
+      /*----------------------change---------------------*/
+      //the value in the field has changed as it was before, happens on click beside the field
+      var keyChange = document.querySelector('#change');
+      inputTxt.addEventListener('change',setChange);
+      function setChange(){
+          console.log('change');
+          keyChange.innerText = inputTxt.value;
+      }
+
+      /*----------------------input---------------------*/
+      //if an input happens
+      var keyInput = document.querySelector('#input');
+      inputTxt.addEventListener('input',setInput);
+      function setInput(){
+          console.log('input');
+          keyInput.innerText = inputTxt.value;
+      }
+
+      /*----------------------blur---------------------*/
+      //click beside the input field(focus goes away)
+      var keyBlur = document.querySelector('#blur');
+      inputTxt.addEventListener('blur',setBlur);
+      function setBlur(){
+          console.log('blur');
+          keyBlur.innerText = inputTxt.value;
+      }
+
+      /*----------------------focus---------------------*/
+      //focus on field
+      var keyFocus = document.querySelector('#focus');
+      inputTxt.addEventListener('focus',setFocus);
+      function setFocus(){
+          console.log('focus');
+          keyFocus.innerText = inputTxt.value;
+      }
+
+
+    </script>
+  </body>
+</html>
+
+

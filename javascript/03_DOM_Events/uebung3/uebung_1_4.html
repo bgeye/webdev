@@ -1,0 +1,39 @@
+<html>
+  <head></head>
+  <body>
+
+    <ul id="liste">
+      <li>Bart Simpson</li>
+      <li>Homer Simpson</li>
+      <li>Lisa Simpson</li>
+      <li>Marge Simpson</li>
+      <li>Maggie Simpson</li>
+      <li>Hugo Simpson</li>
+    </ul>
+
+
+    <script>
+      /* Aufgabe:
+       * Entferne per Javascript das erste und letzte Element der Liste.
+
+       Erwartetes Resultat:
+       <ul id="liste">
+          <li>Homer Simpson</li>
+          <li>Lisa Simpson</li>
+          <li>Marge Simpson</li>
+          <li>Maggie Simpson</li>
+       </ul>
+      */
+
+      var listItem = document.querySelector('#liste');
+      console.log(listItem.firstElementChild); //if only firsChild then he does not now where the element is
+      console.log(listItem.firstChild);//log is only an empty string " " -> this are the spaces before the first <li>
+
+      listItem.removeChild(listItem.firstElementChild);
+      listItem.removeChild(listItem.lastElementChild);
+
+    </script>
+  </body>
+</html>
+
+

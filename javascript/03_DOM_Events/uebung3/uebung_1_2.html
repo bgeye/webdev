@@ -1,0 +1,22 @@
+<html>
+  <head></head>
+  <body>
+    <h1>Titel</h1>
+
+    <div class="container"></div>
+
+    <script>
+      /* Aufgabe:
+        Füge per Javascript ein Bild mit der folgenden URL in das Div mit
+        der Klasse container ein: https://media.giphy.com/media/fDzM81OYrNjJC/giphy.gif
+
+        Tipps: Du musst ein IMG element erstellen, und dessen Attribut src setzten, und es in den DOM einfügen.
+       */
+
+      var pic = document.createElement('img');
+      pic.setAttribute('src','https://media.giphy.com/media/fDzM81OYrNjJC/giphy.gif');
+      document.querySelector('.container').appendChild(pic);
+
+    </script>
+  </body>
+</html>
