@@ -1,13 +1,53 @@
 <html>
   <head></head>
+  <style>
+    .changecolor{
 
-  <body>
+    }
+  </style>
+
+  <body class="bg">
+  <button class="changecolor">CHANGECOLOR</button>
     <script>
       /* Aufgabe:
        * Erstell einen Button, welcher beim Klick den Hintergrund der Seite auf eine zufällige Farbe setzt.
        * Tipp: Du benötigst dazu die CSS-Funktion rgb(), Math.random() und Math.floor()
        * Falls du sie noch nicht kennst, schau auf MDN nach.
       */
+
+
+
+      /*
+      *
+      * Math.random():https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Math/math.random
+      * ABRUNDEN(Math.floor()): https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Math/floor
+      * AUFRUNDEN(Math.ceil()):https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Math/ceil
+      *
+      *
+      * */
+
+      var bgColor = document.querySelector('.bg');
+
+      var btnColor = document.querySelector('.changecolor');
+      btnColor.addEventListener('click',changeColor);
+
+      function getRandomInt(min,max){
+          //min = Math.ceil(min);
+          //max = Math.floor(max);
+
+          return Math.floor(Math.random() * (max-min)) + min;
+
+
+      }
+
+      function changeColor(){
+
+          var rColor = getRandomInt(0,256);
+          var gColor = getRandomInt(0,256);
+          var bColor = getRandomInt(0,256);
+          console.log(rColor,gColor,bColor);
+          bgColor.style.backgroundColor = 'rgb('+rColor+','+gColor+','+bColor+')';
+      }
 
     </script>
   </body>

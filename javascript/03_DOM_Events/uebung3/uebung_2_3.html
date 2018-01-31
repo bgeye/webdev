@@ -38,6 +38,60 @@
          Das Ergebnis soll in das Element mit der ID ergebnis gespeichert werden
       */
 
+      var btnAdd = document.querySelector('#addieren');
+      var btnSub = document.querySelector('#subtrahieren');
+      var btnMulti = document.querySelector('#multiplizieren');
+      var btnDiv = document.querySelector('#dividieren');
+
+      btnAdd.addEventListener('click',addieren);
+      btnSub.addEventListener('click',subtrahieren);
+      btnMulti.addEventListener('click',multiplizieren);
+      btnDiv.addEventListener('click',dividieren);
+
+      function getFieldValue1(){
+          var zahl1 = document.querySelector('#zahl1');
+          return zahl1.value;
+      }
+
+      function getFieldValue2(){
+          var zahl2 = document.querySelector('#zahl2');
+          return zahl2.value;
+      }
+
+      function setResult(result){
+          var ergebnis = document.querySelector('#ergebnis');
+          ergebnis.value = result;
+      }
+
+      function addieren(){
+          //var zahl1 = parseInt(getFieldValue1(),10);
+          //var zahl2 = parseInt(getFieldValue2(),10);
+          // return setResult(zahl1 + zahl2);
+          return setResult(parseInt(getFieldValue1()) + parseInt(getFieldValue2()));
+      }
+
+      function subtrahieren(){
+
+          return setResult(parseInt(getFieldValue1()) - parseInt(getFieldValue2()));
+
+      }
+
+      function multiplizieren(){
+
+          return setResult(parseInt(getFieldValue1()) * parseInt(getFieldValue2()));
+
+      }
+
+      function dividieren(){
+
+          return setResult(parseInt(getFieldValue1()) / parseInt(getFieldValue2()));
+
+      }
+
+
+
+
+
     </script>
   </body>
 </html>
