@@ -9,3 +9,9 @@ if no integer is received?
 
           min = Math.ceil(min);
           max = Math.floor(max);
+          
+          
+          
+##TODO
+
+uebung_2_4
