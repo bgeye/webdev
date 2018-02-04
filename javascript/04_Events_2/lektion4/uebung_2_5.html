@@ -1,0 +1,74 @@
+<html>
+  <head>
+    <style>
+      * {
+        margin: 10px;
+        padding: 5px;
+        font-family: "Helvetica Neue", sans-serif;
+        font-weight: 300;
+      }
+    </style>
+  </head>
+
+  <h1>Telefonbuch 9000</h1>
+
+  <ul id="liste">
+  </ul>
+
+  <body>
+    <script>
+      /* Aufgabe:
+       * Erstelle per Javascript für jedes Mitglied der Simpsons einen
+       * Eintrag in der Liste #liste mit ihrem Vor-, Nachnamen und Alter.
+       *
+       * Pro Zeile soll es einen Button haben, welcher die Zeile entfernt.
+       *
+       * Tipp: Achte auf die EventHandler (PLURAL), wann sie hinzugefügt werden
+       * Zusatzaufgabe für schnellere: Die Zeilen sollen per Button verschoben
+       * werden können. Mit hoch und runter (^ und v)
+
+       Erwartetes Resultat:
+       <ul id="liste">
+          <li>Bart Simpson (10) <button>Entfernen</button></li>
+          <li>Homer Simpson (36) <button>Entfernen</button></li>
+          <li>Lisa Simpson (8)  <button>Entfernen</button></li>
+          <li>Marge Simpson (34) <button>Entfernen</button></li>
+          <li>Maggie Simpson (1)  <button>Entfernen</button></li>
+          <li>Hugo Simpson (10)  <button>Entfernen</button></li>
+       </ul>
+      */
+
+      var simpsons = [
+         {firstname: "Bart", name: "Simpson", age: 10, sex: 'm'},
+         {firstname: "Homer", name: "Simpson", age: 36, sex: 'm'},
+         {firstname: "Lisa", name: "Simpson", age: 8, sex: 'w'},
+         {firstname: "Marge",name: "Simpson",  age: 34, sex: 'w'},
+         {firstname: "Maggie", name: "Simpson", age: 1, sex: 'w'},
+         {firstname: "Hugo", name: "Simpson", age: 10, sex: 'm'}
+       ];
+
+      var item = document.createElement('li');
+      var btn = document.createElement('button');
+
+      for(var i = 0;i < simpsons.length;i++){
+          document.querySelector('#liste')
+              .appendChild(item).innerText = simpsons[i].firstname+' '+simpsons[i].name+' ('+simpsons[i].age+') ';
+          item.appendChild(btn).innerText = 'Entfernen';
+      }
+
+      function removeItem(eu){
+
+      }
+
+      var buttons = document.querySelectorAll('button');
+
+      for(var i = 0;i < buttons.length;i++){
+          buttons[i].addEventListener('click',removeItem(e));
+      }
+
+
+    </script>
+  </body>
+</html>
+
+

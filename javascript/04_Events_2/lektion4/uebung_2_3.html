@@ -1,0 +1,85 @@
+<html>
+  <head>
+    <style>
+      * {
+        margin: 10px;
+        padding: 5px;
+        font-family: "Helvetica Neue", sans-serif;
+        font-weight: 300;
+      }
+    </style>
+  </head>
+
+  <h1>Rechner 5000</h1>
+
+  <label>Zahl 1</label><input type="text" id="zahl1">
+  <br>
+  <label>Zahl 2</label><input type="text" id="zahl2">
+  <br>
+  <label>Ergebnis</label><input disabled type="text" id="ergebnis">
+  <br>
+  <button id="addieren">addieren</button>
+  <button id="subtrahieren">subtrahieren</button>
+  <button id="multiplizieren">multiplizieren</button>
+  <button id="dividieren">dividieren</button>
+
+  <body>
+    <script>
+      /* Aufgabe:
+       * Bau einen Rechner der 2 Eingabefelder und 4 Buttons besitzt.
+         Die Buttons heissen "addieren", "subtrahieren", "dividieren" und "multiplizieren".
+         (Ein Teil ist oben schon vorgebaut, damit es nicht so lange dauert)
+
+         Wenn du auf Multiplizieren klickst, sollen die Werte von beiden Input Feldern multipliziert werden
+         Wenn du auf Addieren klickst, sollen die Werte von beiden Input Feldern addiert werden
+         Wenn du auf Dividieren klickst, sollen die Werte von beiden Input Feldern dividieren werden
+         Wenn du auf Subtrahieren klickst, sollen die Werte von beiden Input Feldern subtrahiert werden
+
+         Das Ergebnis soll in das Element mit der ID ergebnis gespeichert werden
+      */
+
+      function getZahl1(){
+          console.log(document.querySelector('#zahl1')
+              .value);
+          return document.querySelector('#zahl1')
+              .value;
+      }
+
+      function getZahl2(){
+          return document.querySelector('#zahl2')
+              .value;
+      }
+
+      function setResult(result){
+          document.querySelector('#ergebnis')
+              .value = result;
+      }
+
+      document.querySelector('#addieren')
+          .addEventListener('click',function(){
+              console.log('click');
+              setResult(parseInt(getZahl1()) + parseInt(getZahl2()));
+          })
+
+      document.querySelector('#subtrahieren')
+          .addEventListener('click',function(){
+              console.log('click');
+              setResult(parseInt(getZahl1()) - parseInt(getZahl2()));
+          })
+
+      document.querySelector('#multiplizieren')
+          .addEventListener('click',function(){
+              console.log('click');
+              setResult(parseInt(getZahl1()) * parseInt(getZahl2()));
+          })
+
+      document.querySelector('#dividieren')
+          .addEventListener('click',function(){
+              console.log('click');
+              setResult(parseInt(getZahl1()) / parseInt(getZahl2()));
+          })
+    </script>
+  </body>
+</html>
+
+
