@@ -47,24 +47,65 @@
          {firstname: "Hugo", name: "Simpson", age: 10, sex: 'm'}
        ];
 
-      var item = document.createElement('li');
-      var btn = document.createElement('button');
 
       for(var i = 0;i < simpsons.length;i++){
+          console.log(i);
+          var item = document.createElement('li');
+          var btnrm = document.createElement('button');
+          var btndown = document.createElement('button');
+          var btnup = document.createElement('button');
           document.querySelector('#liste')
               .appendChild(item).innerText = simpsons[i].firstname+' '+simpsons[i].name+' ('+simpsons[i].age+') ';
-          item.appendChild(btn).innerText = 'Entfernen';
+          btnrm.classList.add('btn-rm');
+          btndown.classList.add('btn-down');
+          btnup.classList.add('btn-up');
+          item.appendChild(btnrm).innerText = 'Entfernen';
+          item.appendChild(btndown).innerText = 'Down';
+          item.appendChild(btnup).innerText = 'Up';
       }
 
-      function removeItem(eu){
+
+      function removeItem(e){
+          var item = e.target;
+          console.log('item parentNode: '+item.parentNode);
+          console.log('item parentNode parentNode: '+item.parentNode.parentNode);
+          item.parentNode.parentNode.removeChild(item.parentNode);
+      }
+
+      function moveItem(e){
+          var moveItem = e.target;
+          console.log(moveItem.className);
+          if(moveItem.className === 'btn-down'){
+            //move down
+            console.log('down');
+            console.log(moveItem.parentNode.parentNode)
+            moveItem.parentNode.parentNode.insertBefore(moveItem.parentNode,moveItem.parentNode.nextSibling);
+          }else{
+            //move up
+            console.log('up');
+            moveItem.parentNode.parentNode.insertBefore(moveItem.parentNode,moveItem.parentNode.previousSibling);
+          }
+
+          console.log(moveItem.parentNode);
+          console.log(moveItem.parentNode.previousSibling)
 
       }
 
-      var buttons = document.querySelectorAll('button');
+      var buttons = document.querySelectorAll('.btn-rm');
+      var listitems = document.querySelectorAll('.btn-down,.btn-up');
+
+      console.log(listitems);
 
       for(var i = 0;i < buttons.length;i++){
-          buttons[i].addEventListener('click',removeItem(e));
+          buttons[i].addEventListener('click',removeItem);
       }
+
+      for(var i = 0;i < listitems.length;i++){
+          listitems[i].addEventListener('click',moveItem);
+      }
+
+
+
 
 
     </script>
