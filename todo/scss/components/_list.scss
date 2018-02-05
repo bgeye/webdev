@@ -1,0 +1,109 @@
+/**
+*-----------LIST-----------
+*/
+.todo{
+  display:flex;   /*flex-container 1*/
+  flex-wrap:wrap; /*flex-container 1*/
+  width:500px;
+  margin-top:100px;
+
+  &__font{
+    font-size:24px;
+  }
+
+  &__title{
+    flex-basis: 100%; /*flex-item 1*/
+    font-size: 100px;
+    text-align:center;
+  }
+
+  &__content{
+    flex-basis: 100%;/*flex-item 1*/
+    display:flex;    /*flex-container 2*/
+    flex-wrap:wrap;  /*flex-container 2*/
+    background-color:#ffffff;
+    border:1px solid #ededed;
+    box-shadow:1em 1em 1em #ededed,-1em 0 1em #ededed;
+
+  }
+
+  &__list{
+    flex-basis: 100%; /*flex-item 2*/
+  }
+
+  &__list--fade{
+
+  }
+
+  &__footer{
+    flex-basis: 100%; /*flex-item 2*/
+    padding:15px 10px;
+  }
+
+}
+
+.addtask{
+  &__element{
+    flex-basis: 100%; /*flex-item 2*/
+    display:flex;     /*flex-container 3*/
+    padding:25px 0;
+    /*display:flex;*/ /*flex-container 4*/
+    border-bottom:1px solid #ededed;
+  }
+
+  &__addbtn{
+    padding:0 10px;
+  }
+
+  &__iconangle{
+    width:20px;
+    height:12px;
+  }
+
+  &__iconangle:focus{
+    outline:none;
+  }
+
+  &__txt{
+
+  }
+}
+
+.list{
+  &__item{
+    display:flex; /*flex-container 4*/
+    border-bottom:1px solid #ededed;
+    transition: all 0.4s ease-out;
+    opacity:0;
+  }
+
+  &__item--show{
+    opacity:1;
+    padding:25px 0;
+  }
+
+  &__taskdone{
+    flex-grow: 1;   /*flex-item 4*/
+    padding:0 10px;
+  }
+
+  &__txt{
+    flex-basis: 85%; /*flex-item 4*/
+  }
+
+  &__txt--done{
+    text-decoration: line-through;
+    color:#ededed;
+  }
+
+  &__del{
+    flex-grow: 1;   /*flex-item 4*/
+    padding:0 10px;
+  }
+
+  &__removeicon{
+    width:12px;
+    height:12px;
+  }
+
+}

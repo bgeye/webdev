@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /**
  * Base
  */
@@ -41,3 +42,179 @@ table {
 /**
  * Components
  */
+/**
+*-----------GENERAL-----------
+*/
+* {
+  box-sizing: border-box; }
+
+body {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  font-family: “Helvetica Neue”, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: lighter;
+  background-color: #f5f5f5;
+  color: #4d4d4d; }
+
+.img_base {
+  width: 100%;
+  height: 100%; }
+
+.btn {
+  border: none;
+  background-color: #ffffff;
+  padding: 0;
+  margin: 0;
+  flex-grow: 1;
+  /*flex-item 3*/
+  cursor: pointer;
+  outline: none; }
+
+/**
+*-----------FORM-----------
+*/
+input::placeholder {
+  font-style: italic; }
+
+label {
+  cursor: pointer; }
+
+input[type="text"] {
+  border: none;
+  flex-basis: 94%;
+  /*flex-item 3*/
+  padding-right: 10px;
+  color: #4d4d4d; }
+
+input[type="text"]:active {
+  border: none; }
+
+input[type="checkbox"] {
+  display: none; }
+
+input[type="checkbox"] + label span {
+  display: inline-block;
+  vertical-align: middle;
+  width: 25px;
+  height: 25px;
+  background: url(../../img/chck_active.svg) 0px center no-repeat; }
+
+input[type="checkbox"]:checked + label span {
+  background: url(../../img/chck_inactive.svg) 0px center no-repeat; }
+
+input:focus {
+  outline: none;
+  /* animation: anim-shadow 0.3s forwards;*/ }
+
+/**
+*-----------LIST-----------
+*/
+.todo {
+  display: flex;
+  /*flex-container 1*/
+  flex-wrap: wrap;
+  /*flex-container 1*/
+  width: 500px;
+  margin-top: 100px; }
+  .todo__font {
+    font-size: 24px; }
+  .todo__title {
+    flex-basis: 100%;
+    /*flex-item 1*/
+    font-size: 100px;
+    text-align: center; }
+  .todo__content {
+    flex-basis: 100%;
+    /*flex-item 1*/
+    display: flex;
+    /*flex-container 2*/
+    flex-wrap: wrap;
+    /*flex-container 2*/
+    background-color: #ffffff;
+    border: 1px solid #ededed;
+    box-shadow: 1em 1em 1em #ededed,-1em 0 1em #ededed; }
+  .todo__list {
+    flex-basis: 100%;
+    /*flex-item 2*/ }
+  .todo__footer {
+    flex-basis: 100%;
+    /*flex-item 2*/
+    padding: 15px 10px; }
+
+.addtask__element {
+  flex-basis: 100%;
+  /*flex-item 2*/
+  display: flex;
+  /*flex-container 3*/
+  padding: 25px 0;
+  /*display:flex;*/
+  /*flex-container 4*/
+  border-bottom: 1px solid #ededed; }
+
+.addtask__addbtn {
+  padding: 0 10px; }
+
+.addtask__iconangle {
+  width: 20px;
+  height: 12px; }
+
+.addtask__iconangle:focus {
+  outline: none; }
+
+.list__item {
+  display: flex;
+  /*flex-container 4*/
+  border-bottom: 1px solid #ededed;
+  transition: all 0.4s ease-out;
+  opacity: 0; }
+
+.list__item--show {
+  opacity: 1;
+  padding: 25px 0; }
+
+.list__taskdone {
+  flex-grow: 1;
+  /*flex-item 4*/
+  padding: 0 10px; }
+
+.list__txt {
+  flex-basis: 85%;
+  /*flex-item 4*/ }
+
+.list__txt--done {
+  text-decoration: line-through;
+  color: #ededed; }
+
+.list__del {
+  flex-grow: 1;
+  /*flex-item 4*/
+  padding: 0 10px; }
+
+.list__removeicon {
+  width: 12px;
+  height: 12px; }
+
+/**
+*-----------MOBILE-----------
+*/
+/*devices width*/
+/*-----------ADDITIONAL INFO-----------*/
+/*
+Hintergrund: #f5f5f5
+Grau für Linie: #ededed
+Text: #4d4d4d
+Rot: #af2f2f
+Weiss: #ffffff
+Schriftart: “Helvetica Neue”, Helvetica, Arial, sans-serif;
+Standard-Schriftgrösse: 14px
+
+
+#icons
+https://github.com/encharm/Font-Awesome-SVG-PNG
+
+*/
+/*-----------ADDITIONAL INFO-----------*/

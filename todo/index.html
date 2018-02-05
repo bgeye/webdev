@@ -2,22 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link href="./styles/reset.css" rel="stylesheet">
-    <link href="./styles/todo.css" rel="stylesheet">
+    <!--<link href="./styles/reset.css" rel="stylesheet">-->
+    <link href="/assets/css/main.css" rel="stylesheet">
     <title>todo</title>
 </head>
-<body>
+<body class="body">
 
     <div class="todo">
         <h1 class="todo__title">todos</h1>
         <div class="todo__content addtask">
             <div class="addtask__element">
-                <button id="addbtn" class="addtask__addbtn">
-                    <img class="addtask__iconangle"  src="img/angle-down.svg">
+                <button id="addbtn" class="btn addtask__addbtn">
+                    <img class="img_base addtask__iconangle"  src="img/angle-down.svg">
                 </button>
                 <input type="text" id="addtxt" class="addtask__txt todo__font" name="addtxt" placeholder="What needs to be done?">
             </div>
-            <ul id="list-element" class="todo__list todo__font list todo__list--fade">
+            <ul id="list-element" class="todo__list todo__font todo__list--fade list">
                 <li class="list__item list__item--show">
                     <div class="list__taskdone">
                         <input type="checkbox" id="taskdone_1" checked>
@@ -27,8 +27,8 @@
                     </div>
                     <span class="list__txt list__txt--done">Milch</span>
                     <div class="list__del">
-                        <button>
-                            <img class="list__removeicon" src="img/close.svg">
+                        <button class="btn">
+                            <img class="img_base list__removeicon" src="img/close.svg">
                         </button>
                     </div>
                 </li>
@@ -41,8 +41,8 @@
                     </div>
                     <span class="list__txt">Wasser</span>
                     <div class="list__del">
-                        <button>
-                            <img class="list__removeicon"  src="img/close.svg">
+                        <button class="btn">
+                            <img class="img_base list__removeicon"  src="img/close.svg">
                         </button>
                     </div>
                 </li>
