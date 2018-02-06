@@ -10,12 +10,19 @@
     </style>
   </head>
 
-  <h1>Dynamische Liste</h1>
 
-  <ul id="liste">
-  </ul>
 
   <body>
+    <h1>Dynamische Liste</h1>
+
+    <ul id="liste">
+    </ul>
+    <label for="firstname">Vorname</label>
+    <input type="text" id="firstname"/>
+    <label for="name">Name</label>
+    <input type="text" id="name"/>
+    <label for="age">Alter</label>
+    <input type="text" id="age"/>
     <script>
       /* Aufgabe:
        * Erstelle per Javascript für jedes Mitglied der Simpsons einen
@@ -45,6 +52,42 @@
       */
 
       var simpsonJSON = '[{"firstname":"Bart","name":"Simpson","age":10,"sex":"m"},{"firstname":"Homer","name":"Simpson","age":36,"sex":"m"},{"firstname":"Lisa","name":"Simpson","age":8,"sex":"w"},{"firstname":"Marge","name":"Simpson","age":34,"sex":"w"},{"firstname":"Maggie","name":"Simpson","age":1,"sex":"w"},{"firstname":"Hugo","name":"Simpson","age":10,"sex":"m"}]';
+
+      //parse JSON into js
+      var list = JSON.parse(simpsonJSON);
+      console.log(list);
+
+      //add list items to ul with foreach loop
+      list.forEach(function(element){
+          console.log(element);
+          var listItem = document.createElement('li');
+          var text = element.firstname+' '+element.name+' ('+element.age+')';
+          document.querySelector('#liste')
+              .appendChild(listItem).innerHTML = text + '<button>Entfernen</button>';
+      });
+
+      document.querySelector('#liste')
+          .addEventListener('click',function(event){
+              if(event.target && event.target.matches('li button')){
+
+                  event.target.parentNode.parentNode.removeChild(event.target.parentNode);
+              }
+          });
+
+
+
+
+      
+      function getFirstname(){
+          var data = [];
+          data.push(document.querySelector('#firstname')
+              .value) ;
+          data.push(document.querySelector('#name')
+              .value) ;
+          data.push(document.querySelector('#age')
+              .value) ;
+          console.log(data);
+      }
 
     </script>
   </body>
