@@ -67,8 +67,6 @@
 
       function removeItem(e){
           var item = e.target;
-          console.log('item parentNode: '+item.parentNode);
-          console.log('item parentNode parentNode: '+item.parentNode.parentNode);
           item.parentNode.parentNode.removeChild(item.parentNode);
       }
 
@@ -79,15 +77,18 @@
             //move down
             console.log('down');
             console.log(moveItem.parentNode.parentNode)
-            moveItem.parentNode.parentNode.insertBefore(moveItem.parentNode,moveItem.parentNode.nextSibling);
+            //moveItem.parentNode.parentNode.insertBefore(moveItem.parentNode,moveItem.parentNode.nextElementSibling);
+            moveItem.parentNode.parentNode.insertBefore(moveItem.parentNode.nextElementSibling,moveItem.parentNode);
           }else{
             //move up
             console.log('up');
-            moveItem.parentNode.parentNode.insertBefore(moveItem.parentNode,moveItem.parentNode.previousSibling);
+            console.log(moveItem.parentNode.parentNode)
+            moveItem.parentNode.parentNode.insertBefore(moveItem.parentNode,moveItem.parentNode.previousElementSibling);
           }
 
           console.log(moveItem.parentNode);
-          console.log(moveItem.parentNode.previousSibling)
+          console.log(moveItem.parentNode.previousElementSibling)
+          console.log(moveItem.parentNode.nextElementSibling);
 
       }
 
