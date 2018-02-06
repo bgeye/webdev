@@ -1,0 +1,64 @@
+<html>
+  <head>
+    <style>
+      * {
+        margin: 10px;
+        padding: 5px;
+        font-family: "Helvetica Neue", sans-serif;
+        font-weight: 300;
+      }
+    </style>
+  </head>
+
+  <h1>Dynamische Liste</h1>
+
+  <ul id="liste">
+  </ul>
+
+  <body>
+    <script>
+      /* Aufgabe:
+       * Verwende deine Lösung der vorherigen Aufgabe (uebung_2_1)
+       * als Grundlage (kopier deinen Code hierrein).
+       *
+       * Verwende fürs Aufbauen der Einträge den Render Ansatz.
+       * Die angezeigten LI-Einträge sollen im simpsons Array verwaltet werden:
+       * D.h. wenn du auf Entfernen klickst, soll der Eintrag aus dem simpson
+       * Array entfernt werden und danach die Render Methode aufgerufen werden.
+       * Auch beim hinzufügen eines neuen Eintrages, soll dies über das simpson
+       * Array geschehen.
+
+       * Der aktuelle Zustand des simpson Arrays soll in der LocalStorage
+       * gespeichert werden, damit beim neuladen die Einträge wiederhergestellt
+       * werden.
+       *
+       * Tipps: Verwende für das Erstellen der Nodes die forEach funktion.
+       *        Verwende den Delegate Ansatz
+       *        Verwende den Render Ansatz
+       *        Wenn nichts in der LocalStorage vorhanden ist, verwende
+                  simpsonJSON um das simpson Array zu befüllen, ansonsten
+                  verwende den Eintrag aus localStorage
+
+       * Zusatzaufgabe: Bau neben dem Löschen Knopf noch 2 Buttons ein:
+       * Hoch & Runter: beim Klick werden die Einträge um 1 nach oben
+       * bzw. nach unten geschoben.
+
+       Erwartetes Resultat:
+       <ul id="liste">
+          <li>Bart Simpson (10) <button>Entfernen</button></li>
+          <li>Homer Simpson (36) <button>Entfernen</button></li>
+          <li>Lisa Simpson (8) <button>Entfernen</button></li>
+          <li>Marge Simpson (34) <button>Entfernen</button></li>
+          <li>Maggie Simpson (1) <button>Entfernen</button></li>
+          <li>Hugo Simpson (10) <button>Entfernen</button></li>
+          <li>Später Hinzugefügt (99) <button>Entfernen</button></li>
+       </ul>
+      */
+
+      var simpsonJSON = '[{"firstname":"Bart","name":"Simpson","age":10,"sex":"m"},{"firstname":"Homer","name":"Simpson","age":36,"sex":"m"},{"firstname":"Lisa","name":"Simpson","age":8,"sex":"w"},{"firstname":"Marge","name":"Simpson","age":34,"sex":"w"},{"firstname":"Maggie","name":"Simpson","age":1,"sex":"w"},{"firstname":"Hugo","name":"Simpson","age":10,"sex":"m"}]';
+
+    </script>
+  </body>
+</html>
+
+

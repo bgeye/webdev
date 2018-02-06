@@ -1,0 +1,78 @@
+<html>
+  <head>
+    <style>
+      * {
+        margin: 10px;
+        padding: 5px;
+        font-family: "Helvetica Neue", sans-serif;
+        font-weight: 300;
+      }
+    </style>
+  </head>
+
+
+
+  <body>
+    <h1>Hallo NAME!</h1>
+    <label for="name">Name</label>
+    <input type="text" id="name"/>
+    <button class="btn-save">Speichern</button>
+    <script>
+      /* Aufgabe:
+       * Erstelle ein Eingabefeld und einen Button "Speichern".
+       * Wenn du auf speichern klickst, wird der Name im H1 durch
+       * die eingabe ersetzt und der eingegebene Name wird im Browser gespeichert.
+       * Wenn du das Fenster neu lädst, soll der gleiche Name
+       * wie vorher eingegeben wurde, wieder angezeigt werden.
+
+       Erwartetes Resultat:
+       Du trägst deinen Namen ein und klickst auf speichern.
+       Vor & Nach dem Reload erscheint dein Name im H1 Titel
+       z.B. <h1>Hallo Pascal!</h1>
+      */
+
+
+      getLocalName();
+      function getLocalName(){
+          var localName = localStorage.getItem('myName');
+          var title = document.querySelector('h1');
+          if(localName){
+              title.innerText = 'Hallo '+localName+'!';
+          }else{
+              title.innerText = 'Bitte gib einen Namen ein!';
+          }
+      }
+
+      //get input value
+      function getInputValue(){
+        return document.querySelector('#name')
+            .value;
+      }
+
+      //add name to h1 and save in localstorage
+      function saveName(){
+          var name = getInputValue();
+
+          //output in h1
+          document.querySelector('h1')
+              .innerText = 'Hallo '+name+'!';
+
+          //save in local storage
+          localStorage.setItem('myName',name);
+
+          //save in session storage
+          sessionStorage.setItem('myName',name);
+
+      }
+
+      //set click event listener
+      document.querySelector('.btn-save')
+          .addEventListener('click',saveName);
+
+
+
+    </script>
+  </body>
+</html>
+
+

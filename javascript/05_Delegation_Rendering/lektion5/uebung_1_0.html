@@ -1,0 +1,57 @@
+<html>
+  <head>
+    <style>
+      body, html {
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+        background-color:black;
+        background-image: url('images/BXc1IXP.jpg');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center;
+        background-size: cover;
+      }
+      #roadster {
+        z-index: 50;
+        will-change: left, top;
+        width: 80px;
+        height: 50px;
+        position: absolute;
+        padding: 0;
+        margin: 0;
+      }
+    </style>
+  </head>
+
+  <body>
+  <img id="roadster" src="images/roadster.png">
+    <script>
+      /* Aufgabe:
+       * Ganz im Zeichen des heutigen Raketenstarts, schicken wir auch einen Tesla ins all.
+       * Oben im HTML hast du ein Tesla Roadster, mit der id "roadster".
+       *
+       * Erstelle einen EventHandler auf dem body, welcher auf den Event mousemove hört.
+       * Bei jeder Bewebung der Maus, soll der Tesla so absolut positioniert werden,
+       * dass es dort ist, wo der Mauszeiger gerade war.
+       *
+       * Achte darauf, dass der Roadster in der Mitte deiner deiner Maus ist, dazu musst du etwas rechnen.
+       *
+       * Tipps: Du benötigst dazu den mousemove Event, die Style Attribute und die Position des Cursors aus dem Event.
+       */
+
+
+      document.querySelector('body')
+          .addEventListener('mousemove',moveTesla);
+
+      function moveTesla(e){
+          var x = e.clientX -40; // 1/2 of image widh
+          var y = e.clientY -25; // 1/2 of image height
+          var tesla = document.querySelector('#roadster');
+          tesla.style.top = y;
+          tesla.style.left = x;
+          console.log(e.clientX,e.clientY);
+      }
+    </script>
+  </body>
+</html>
