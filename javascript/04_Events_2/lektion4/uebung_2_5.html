@@ -72,11 +72,13 @@
 
       function moveItem(e){
           var moveItem = e.target;
+          console.log(e.target.className);
           console.log(moveItem.className);
           if(moveItem.className === 'btn-down'){
             //move down
             console.log('down');
             console.log(moveItem.parentNode.parentNode)
+              console.log(e.target.parentNode.parentNode)
             //moveItem.parentNode.parentNode.insertBefore(moveItem.parentNode,moveItem.parentNode.nextElementSibling);
             moveItem.parentNode.parentNode.insertBefore(moveItem.parentNode.nextElementSibling,moveItem.parentNode);
           }else{
