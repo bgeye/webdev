@@ -26,7 +26,7 @@
 .nav,
 .aside{
     /*width:20%;*/
-    flex-grow: 1;/*gleichmässige Aufteilung an Stelle von with, wenn .nav = flex-grow=2, dann verhältnis .nav : .aside = 2:1*/
+    flex: 1 1 0;/*gleichmässige Aufteilung an Stelle von with, wenn .nav = flex-grow=2, dann verhältnis .nav : .aside = 2:1*/
     background-color: lightgrey;
 
 }
