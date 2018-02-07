@@ -17,12 +17,14 @@
 
     <ul id="liste">
     </ul>
-    <label for="firstname">Vorname</label>
-    <input type="text" id="firstname"/>
-    <label for="name">Name</label>
-    <input type="text" id="name"/>
-    <label for="age">Alter</label>
-    <input type="text" id="age"/>
+    <form class="addmember">
+      <label for="firstname">Vorname</label>
+      <input type="text" id="firstname"/>
+      <label for="name">Name</label>
+      <input type="text" id="name"/>
+      <label for="age">Alter</label>
+      <input type="text" id="age"/>
+    </form>
     <script>
       /* Aufgabe:
        * Erstelle per Javascript für jedes Mitglied der Simpsons einen
@@ -76,17 +78,35 @@
 
 
 
+      //add new family member
 
+      var data = [];//array to save data from input fields
+
+      document.querySelector('.addmember')
+          .addEventListener('keydown',function(event){
+              if(event.code == 'Enter' && event.target.matches('input')){
+                  getFirstname();
+                  addMember();
+                  data = [];
+              }
+          });
 
       function getFirstname(){
-          var data = [];
+
           data.push(document.querySelector('#firstname')
               .value) ;
           data.push(document.querySelector('#name')
               .value) ;
           data.push(document.querySelector('#age')
               .value) ;
-          console.log(data);
+      }
+
+      function addMember(){
+          var listItem = document.createElement('li');
+          var text = data[0]+' '+data[1]+' ('+data[2]+')';
+          document.querySelector('#liste')
+              .appendChild(listItem).innerHTML = text + '<button>Entfernen</button>';
+
       }
 
     </script>
