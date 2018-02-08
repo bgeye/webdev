@@ -1,0 +1,113 @@
+<html>
+  <head>
+    <style>
+      * {
+        margin: 10px;
+        padding: 5px;
+        font-family: "Helvetica Neue", sans-serif;
+        font-weight: 300;
+      }
+    </style>
+  </head>
+
+
+  <body>
+    <h1>Dynamische Liste</h1>
+
+    <ul id="liste">
+    </ul>
+    <form id="addItem">
+      <label for="firstname">Vorname</label>
+      <input type="text" id="firstname"/>
+      <label id="name">Name</label>
+      <input type="text" id="name"/>
+      <label for="age">Alter</label>
+      <input type="text" id="age"/>
+    </form>
+    <script>
+      /* Aufgabe:
+       * Erstelle per Javascript für jedes Mitglied der Simpsons einen
+       * Eintrag in der Liste #liste mit ihrem Vor-, Nachnamen und Alter.
+       *
+       * Pro Zeile soll es einen Button haben, welcher die Zeile entfernt.
+       * Implementiere das Löschen mittels dem Delegate Ansatz.
+       *
+       * Unter der Liste, sollen Mittels 3 Eingabe Feldern:
+       * Vorname, Nachname und Alter weitere Einträge hinzugefügt werden können,
+       * welche ebenfalls gelöscht werden können, nachdem sie
+       * hinzugefügt wurden.
+       *
+       * Tipps: Verwende für das Erstellen der Nodes die forEach funktion.
+       *        Verwende den Delegate Ansatz
+
+       Erwartetes Resultat:
+       <ul id="liste">
+          <li>Bart Simpson (10) <button>Entfernen</button></li>
+          <li>Homer Simpson (36) <button>Entfernen</button></li>
+          <li>Lisa Simpson (8) <button>Entfernen</button></li>
+          <li>Marge Simpson (34) <button>Entfernen</button></li>
+          <li>Maggie Simpson (1) <button>Entfernen</button></li>
+          <li>Hugo Simpson (10) <button>Entfernen</button></li>
+          <li>Später Hinzugefügt (99) <button>Entfernen</button></li>
+       </ul>
+      */
+
+      var simpsonJSON = '[{"firstname":"Bart","name":"Simpson","age":10,"sex":"m"},{"firstname":"Homer","name":"Simpson","age":36,"sex":"m"},{"firstname":"Lisa","name":"Simpson","age":8,"sex":"w"},{"firstname":"Marge","name":"Simpson","age":34,"sex":"w"},{"firstname":"Maggie","name":"Simpson","age":1,"sex":"w"},{"firstname":"Hugo","name":"Simpson","age":10,"sex":"m"}]';
+
+      var family = JSON.parse(simpsonJSON);
+      console.log(family);
+
+      var list = document.querySelector('#liste');
+      list.addEventListener('click',function(e){
+              if(e.target && e.target.matches('li button')){
+
+                  //e.target.parentNode.parentNode.removeChild(e.target.parentNode);
+                  e.currentTarget.removeChild(e.target.parentNode);
+                  console.log(e.currentTarget);
+                  console.log(e.target.parentNode);
+              }
+          })
+
+
+
+      family.forEach(function(element){
+          var listItem = document.createElement('li');
+          list.appendChild(listItem).innerHTML = element.firstname+' '+element.name+' ('+element.age+')'+'<button>Entfernen</button>';
+
+      });
+
+      //add new item
+      var inputs = [];
+
+      document.querySelector('#addItem')
+          .addEventListener('keydown',function(e){
+              console.log(e.code);
+              if(e.code === 'Enter'){
+                  if(e.target && e.target.matches('input')){
+                      addItem();
+                  }
+              }
+
+          });
+
+      function addItem(){
+          getInput();
+          var listItem = document.createElement('li');
+          list.appendChild(listItem)
+              .innerHTML = inputs[0]+' '+inputs[1]+' ('+inputs[2]+')'+'<button>Entfernen</button>'
+      }
+
+      function getInput(){
+
+          inputs.push(document.querySelector('#firstname').value);
+          inputs.push(document.querySelector('#name').value);
+          inputs.push(document.querySelector('#age').value);
+
+      }
+
+
+    </script>
+  </body>
+</html>
+
+
