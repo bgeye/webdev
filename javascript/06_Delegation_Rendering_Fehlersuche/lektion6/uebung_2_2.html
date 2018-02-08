@@ -15,6 +15,14 @@
 
     <ul id="liste">
     </ul>
+    <form id="addItem">
+      <label for="firstname">Vorname</label>
+      <input type="text" id="firstname"/>
+      <label for="name">Name</label>
+      <input type="text" id="name"/>
+      <label for="age">Alter</label>
+      <input type="text" id="age"/>
+    </form>
     <script>
       /* Aufgabe:
        * Verwende deine Lösung der vorherigen Aufgabe (uebung_2_2)
@@ -56,6 +64,81 @@
 
       var simpsonJSON = '[{"firstname":"Bart","name":"Simpson","age":10,"sex":"m"},{"firstname":"Homer","name":"Simpson","age":36,"sex":"m"},{"firstname":"Lisa","name":"Simpson","age":8,"sex":"w"},{"firstname":"Marge","name":"Simpson","age":34,"sex":"w"},{"firstname":"Maggie","name":"Simpson","age":1,"sex":"w"},{"firstname":"Hugo","name":"Simpson","age":10,"sex":"m"}]';
 
+      var family;
+      var inputs = [];
+      var list = document.querySelector('#liste');
+
+      //check if local storage has values
+      if(localStorage.getItem('family')){
+          family = JSON.parse(localStorage.getItem('family'));
+      }else{
+          family = JSON.parse(simpsonJSON);
+      }
+
+      renderList();
+
+
+      list.addEventListener('click',function(e){
+          if(e.target && e.target.matches('li button')){
+              var removeId = e.target.parentNode.id;
+              family.splice(removeId,1);//removeId = id on li and current index-id in array
+              renderList();
+              saveLocal();
+
+          }
+      });
+
+
+      function renderList(){
+          list.innerHTML = '';//remove current list items
+          family.forEach(function(element,index){
+              var listItem = document.createElement('li');
+              listItem.innerHTML = element.firstname+' '+element.name+' ('+element.age+')'+'<button>Entfernen</button>';
+              listItem.id = index;//set id from array to id -> to know where to delete when clicked
+              list.appendChild(listItem);
+          });
+      }
+
+      document.querySelector('#addItem')
+          .addEventListener('keydown',function(e){
+              console.log(e.code);
+              if(e.code === 'Enter'){
+                  if(e.target && e.target.matches('input')){
+                      addItem();
+                  }
+              }
+
+          });
+
+      function addItem(){
+          getInput();
+          family.push({firstname :inputs[0],name :inputs[1],age:inputs[2]});
+          renderList();
+          saveLocal();
+          clearFields();
+
+      }
+
+      function getInput(){
+
+          inputs.push(document.querySelector('#firstname').value);
+          inputs.push(document.querySelector('#name').value);
+          inputs.push(document.querySelector('#age').value);
+
+      }
+
+      function clearFields(){
+          inputs = [];
+          document.querySelector('#firstname').value = '';
+          document.querySelector('#name').value = '';
+          document.querySelector('#age').value = '';
+      }
+
+
+      function saveLocal(){
+          var json = JSON.stringify(family);
+          localStorage.setItem('family',json);
+      }
     </script>
   </body>
 </html>
