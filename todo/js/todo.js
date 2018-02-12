@@ -1,24 +1,14 @@
 
 
 
-var add = document.getElementById('addbtn');
-add.addEventListener('click',addNewTask);
-
-
-function addNewTask(){
-
-    var list = document.getElementById('list-element');
-    var newLi = document.createElement('li');
-    var tasktxt = document.getElementById('addtxt').value;
-    newLi.className += 'list__item';
-    newLi.innerHTML = tasktxt;
-    list.appendChild(newLi);
-    setTimeout(function(){
-
-        newLi.className = newLi.className + ' list__item--show';
-
-    },50);
-}
+var list = document.querySelector('.todo__list')
+    .addEventListener('click',function(e){
+        console.log('remove');
+        console.log(e.target);
+        if(e.target && e.target.matches('li .list__removeicon')){
+            console.log('in');
+        }
+    });
 
 
 document.querySelector('#addtxt')
@@ -59,7 +49,7 @@ function addNewItem(e){
         var boxDel = document.createElement('div');
         boxDel.classList.add('list__del');
         var btnDel = document.createElement('button');
-        btnDel.classList.add('btn');
+        btnDel.classList.add('btn','btnremove');
         var imgDel = document.createElement('img');
         imgDel.classList.add('img_base','list__removeicon');
         imgDel.setAttribute('src','img/close.svg')
