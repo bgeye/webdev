@@ -79,12 +79,24 @@
 
 
       list.addEventListener('click',function(e){
-          if(e.target && e.target.matches('li button')){
+          if(e.target && e.target.matches('li button.btnremove')){
               var removeId = e.target.parentNode.id;
               family.splice(removeId,1);//removeId = id on li and current index-id in array
               renderList();
               saveLocal();
 
+          }else if(e.target && e.target.matches('li button.btnup')){
+              var moveId = e.target.parentNode.id;
+              var element = family[moveId];
+              family.splice(moveId, 1);
+              family.splice(parseInt(moveId)-1, 0, element);
+              renderList();
+          }else if(e.target && e.target.matches('li button.btndown')){
+              var moveId = e.target.parentNode.id;
+              var element = family[moveId];
+              family.splice(moveId, 1);
+              family.splice(parseInt(moveId)+1, 0, element);
+              renderList();
           }
       });
 
@@ -93,7 +105,10 @@
           list.innerHTML = '';//remove current list items
           family.forEach(function(element,index){
               var listItem = document.createElement('li');
-              listItem.innerHTML = element.firstname+' '+element.name+' ('+element.age+')'+'<button>Entfernen</button>';
+              listItem.innerHTML = element.firstname+' '+element.name+' ('+element.age+')'
+                  +'<button class="btnremove">Entfernen</button>'
+                  +'<button class="btnup">up</button>'
+                  +'<button class="btndown">down</button>';
               listItem.id = index;//set id from array to id -> to know where to delete when clicked
               list.appendChild(listItem);
           });
