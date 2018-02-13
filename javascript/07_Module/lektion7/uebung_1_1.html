@@ -1,0 +1,72 @@
+<html>
+  <head>
+    <style>
+      * {
+        margin: 10px;
+        padding: 5px;
+        font-family: "Helvetica Neue", sans-serif;
+        font-weight: 300;
+      }
+      </style>
+  </head>
+  <body>
+    <h1>Toolbox Test</h1>
+
+    <h2>Remove Test</h2>
+    <button id="remove-element-test">Beim click sollte ich verschwinden</button>
+    <p class="spacer">&nbsp;</p>
+    <h2>Delegate & Remove Test</h2>
+    <ul id="parent-list">
+      <li id="post-1">Item 1 <button>Löschen</button></li>
+      <li id="post-2">Item 2 <button>Löschen</button></li>
+      <li id="post-3">Item 3 <button>Löschen</button></li>
+    </ul>
+
+    <!-- <script src="tools.js"></script> -->
+    <script src="js/tools.js"></script>
+    <script>
+      /* Aufgabe:
+       * Erstelle ein Modul für häufig verwendete Methoden genannt Tools.
+       * Das Tools-Modul soll in einer eigenen Datei genannt tools.js leben.
+       * Binde das Modul unten ein.
+       *
+       * In deiner Toolbox sollst du die Methoden delegate und removeElement einbauen.
+       *
+       * Die Methoden sollen so implementiert werden, damit der Code unten funktioniert.
+       * Der Code unten darf nicht geändert werden.
+       *
+       Erwartetes Resultat:
+        - Klick auf Löschen entfernt das Element
+      */
+      var parentList = document.querySelector('#parent-list');
+      var removeTest = document.querySelector('#remove-element-test');
+
+      if (typeof Tools == "undefined") {
+        console.log('Wo sind deine Tools?');
+      } else {
+        if (Tools.removeElement) {
+          removeTest.addEventListener('click', function (event) {
+            Tools.removeElement(event.target);
+          });
+        } else {
+          console.log('Mir fehlt die removeElement Funktion');
+        }
+        if (Tools.delegate) {                   //here the remove function is executed
+            parentList.addEventListener('click', Tools.delegate('li button', function (event) {
+            console.log('Delegate hat schon mal funktioniert');
+            console.log(event.target.parentNode);
+            Tools.removeElement(event.target.parentNode);
+            console.log('Ist das element verschwunden?');
+          }));
+        } else {
+          console.log('Mir fehlt die delegate Funktion');
+        }
+      }
+
+
+    </script>
+
+  </body>
+</html>
+
+

@@ -1,0 +1,53 @@
+<html>
+  <head>
+    <style>
+      * {
+        margin: 10px;
+        padding: 5px;
+        font-family: "Helvetica Neue", sans-serif;
+        font-weight: 300;
+      }
+      </style>
+  </head>
+  <body>
+    <h1>Budget Todo-List (mit Delegate)</h1>
+    <ul id="parent-list">
+      <li id="post-1">Item 1 <button>Löschen</button></li>
+      <li id="post-2">Item 2 <button>Löschen</button></li>
+      <li id="post-3">Item 3 <button>Löschen</button></li>
+    </ul>
+    <input id="text-input" placeholder="Text"><button id="add-item">Hinzufügen</button>
+  <script>
+    /* Aufgabe:
+    * Im Code unten haben sich 5 Fehler eingeschlichen.
+    *
+    * Kannst du alle finden und den Code lauffähig machen?
+    *
+    */
+    var parentList = document.querySelector('#parent-list');
+    var textInput = document.querySelector('#text-input'); //1
+    function removeItem(event) {
+      event.target.parentNode.parentNode.removeChild(event.target.parentNode);//2
+    }
+    function addItem() {
+      var newItem = document.createElement('li');
+      newItem.innerHTML = textInput.value + ' <button>Löschen</button>';//3
+      parentList.appendChild(newItem);
+      // Neuen hinzufügen Button anhängen
+      newItem.querySelector('button').addEventListener('click', removeItem);
+      textInput.value = '';
+    }
+
+    // Hinzufügen Button anbinden
+    document.querySelector('#add-item').addEventListener('click', addItem);
+
+    // Alle löschen Buttons anbinden
+    document.querySelectorAll('li button').forEach(function (elem) {//4
+      elem.addEventListener('click', removeItem);//5
+    });
+
+  </script>
+  </body>
+</html>
+
+
