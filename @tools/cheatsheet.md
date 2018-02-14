@@ -16,4 +16,9 @@ delete remote branch
 
         git push origin --delete test
         
-        
+       
+###js
+remove element from array with index = 3
+
+        var myFish = ['angel', 'clown', 'drum', 'mandarin', 'sturgeon']; 
+        var removed = myFish.splice(3, 1); 
