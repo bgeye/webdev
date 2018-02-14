@@ -42,24 +42,23 @@
       var removeTest = document.querySelector('#remove-element-test');
 
       if (typeof Tools == "undefined") {
-        console.log('Wo sind deine Tools?');
+        //console.log('Wo sind deine Tools?');
       } else {
         if (Tools.removeElement) {
           removeTest.addEventListener('click', function (event) {
             Tools.removeElement(event.target);
           });
         } else {
-          console.log('Mir fehlt die removeElement Funktion');
+          //console.log('Mir fehlt die removeElement Funktion');
         }
         if (Tools.delegate) {                   //here the remove function is executed
             parentList.addEventListener('click', Tools.delegate('li button', function (event) {
-            console.log('Delegate hat schon mal funktioniert');
-            console.log(event.target.parentNode);
+            //console.log('Delegate hat schon mal funktioniert');
             Tools.removeElement(event.target.parentNode);
-            console.log('Ist das element verschwunden?');
+            //console.log('Ist das element verschwunden?');
           }));
         } else {
-          console.log('Mir fehlt die delegate Funktion');
+          //console.log('Mir fehlt die delegate Funktion');
         }
       }
 

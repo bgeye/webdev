@@ -4,20 +4,19 @@ var Tools = (function(){
         element.parentNode.removeChild(element);
     };
 
-    var delegate = function(param,callback){
+    var delegate = function(target,callback){
 
-            return function remove(e){
-                console.log(param);
-                console.log(e.target);
-               if(e.target && e.target.matches(param)){
-
-                   callback(e);
+            //function check is returned back for click!
+            return function check(e){  //on click this function is executed, event is like when a normal click function is executed
+               if(e.target && e.target.matches(target)){
+                   console.log('callback event: '+e);
+                   callback(e);//the function to remove the element is called e -> event
                }
             }
 
     };
     return{
-        delegate:delegate,
+        delegate:delegate,           //public methods to use in scripts in other files where tools.js is inbound
         removeElement:removeElement
     };
 })()
