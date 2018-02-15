@@ -1,46 +1,53 @@
 
+var taskJSON = [];/*'[{"tod":"Salat"},{"tod":"Milch"}]';*/ //only for testing
 
+var taskList;// = JSON.parse(taskJSON);
 
-var add = document.getElementById('addbtn');
-add.addEventListener('click',addNewTask);
+if(localStorage.getItem('tasklist')){
+    taskList = JSON.parse(localStorage.getItem('tasklist'));
+}else{
+    if(!localStorage.getItem('tasklist')){
+        taskList = taskJSON;
+    }else{
+        taskList = JSON.parse(taskJSON);
+    }
 
-
-function addNewTask(){
-
-    var list = document.getElementById('list-element');
-    var newLi = document.createElement('li');
-    var tasktxt = document.getElementById('addtxt').value;
-    newLi.className += 'list__item';
-    newLi.innerHTML = tasktxt;
-    list.appendChild(newLi);
-    setTimeout(function(){
-
-        newLi.className = newLi.className + ' list__item--show';
-
-    },50);
 }
 
 
-document.querySelector('#addtxt')
-    .addEventListener('keydown',addNewItem);
 
-function getInput(){
-    return document.querySelector('#addtxt')
-        .value
+console.log(taskList);
+//showContent();
+function showContent(){
+    taskList.forEach(function(element,index){
+        console.log(element.todo,index);
+    })
 }
 
-function defaultInput(){
-    return document.querySelector('#addtxt')
-        .value = '';
-}
+var list = document.querySelector('.todo__list');
+console.log(list);
 
-function addNewItem(e){
+//remove list item
+   list.addEventListener('click',function(e){
+        if(e.target && e.target.matches('li .list__removeicon')){
 
-    if(e.code === 'Enter'){
-        var inputTxt = getInput();
+            var removeId = e.target.parentNode.parentNode.parentNode.id;
+            console.log(removeId);
+            taskList.splice(removeId,1);
+            renderList();
+            console.log(e.target.parentNode.parentNode.parentNode.id);
+        }
+    });
 
+renderList();
+function renderList(){
+    //console.log(list);
+    list.innerHTML = ''; //delete li elements(means the list content)
+    taskList.forEach(function(element,index){
+        console.log(element.todo,index);
         var listItem = document.createElement('li');
         listItem.classList.add('list__item','list__item--show');
+        listItem.id = index;
         //checkbox
         var boxCheck = document.createElement('div');
         boxCheck.classList.add('list__taskdone');
@@ -59,32 +66,57 @@ function addNewItem(e){
         var boxDel = document.createElement('div');
         boxDel.classList.add('list__del');
         var btnDel = document.createElement('button');
-        btnDel.classList.add('btn');
+        btnDel.classList.add('btn','btnremove');
         var imgDel = document.createElement('img');
         imgDel.classList.add('img_base','list__removeicon');
-        imgDel.setAttribute('src','img/close.svg')
+        imgDel.setAttribute('src','img/close.svg');
 
+        list.appendChild(listItem);
+        listItem.appendChild(boxCheck);
+        boxCheck.appendChild(inputCheck);
+        boxCheck.appendChild(labelCheck);
+        labelCheck.appendChild(labelInner);
+        listItem.appendChild(txtInner).innerHTML = element.todo;
+        listItem.appendChild(boxDel)
+        boxDel.appendChild(btnDel)
+        btnDel.appendChild(imgDel);
+    })
+    saveLocal();
+    countTask();
+}
 
-        //create listElement
-        document.querySelector('.todo__list')
-            .appendChild(listItem)
-            listItem.appendChild(boxCheck)
-            boxCheck.appendChild(inputCheck)
-            boxCheck.appendChild(labelCheck)
-            labelCheck.appendChild(labelInner)
-            listItem.appendChild(txtInner).innerText = inputTxt
-            listItem.appendChild(boxDel)
-            boxDel.appendChild(btnDel)
-            btnDel.appendChild(imgDel);
+document.querySelector('#addtxt')
+     .addEventListener('keydown',addNewItem);
 
-        //delete value of inputfield
+function addNewItem(e){
+
+    if(e.code === 'Enter'){
+        var inputTxt = getInput();
+        taskList.push({todo:inputTxt});
         defaultInput();
+        renderList();
     }
+}
+
+function getInput(){
+    return document.querySelector('#addtxt')
+        .value
+}
+
+function defaultInput(){
+    return document.querySelector('#addtxt')
+        .value = '';
+}
 
 
+function saveLocal(){
+    var json = JSON.stringify(taskList);
+    localStorage.setItem('tasklist',json);
+}
 
-
-
-
+function countTask(){
+    var remain = taskList.length;
+    document.querySelector('.footer__count')
+        .innerText = remain;
 
 }

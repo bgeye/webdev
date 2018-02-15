@@ -12,12 +12,15 @@
         <h1 class="todo__title">todos</h1>
         <div class="todo__content addtask">
             <div class="addtask__element">
+
                 <button id="addbtn" class="btn addtask__addbtn">
                     <img class="img_base addtask__iconangle"  src="img/angle-down.svg">
                 </button>
+
                 <input type="text" id="addtxt" class="addtask__txt todo__font" name="addtxt" placeholder="What needs to be done?">
             </div>
             <ul class="todo__list todo__font todo__list--fade list">
+                <!--
                 <li class="list__item list__item--show">
                     <div class="list__taskdone">
                         <input type="checkbox" id="taskdone_1" checked>
@@ -46,9 +49,10 @@
                         </button>
                     </div>
                 </li>
+                -->
             </ul>
-            <footer class="todo__footer">
-                <span>3 items left</span>
+            <footer class="todo__footer footer">
+                <span class="footer__count">3</span><span>&nbsp;items left</span>
             </footer>
         </div>
     </div>
