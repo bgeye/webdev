@@ -1,13 +1,20 @@
 
-var taskJSON = '[{"todo":"Salat"},{"todo":"Milch"}]';
+var taskJSON = [];/*'[{"tod":"Salat"},{"tod":"Milch"}]';*/ //only for testing
 
 var taskList;// = JSON.parse(taskJSON);
 
-if(localStorage.getItem('taskList')){
-    taskList = JSON.parse(localStorage.getItem('taskList'));
+if(localStorage.getItem('tasklist')){
+    taskList = JSON.parse(localStorage.getItem('tasklist'));
 }else{
-    taskList = JSON.parse(taskJSON);
+    if(!localStorage.getItem('tasklist')){
+        taskList = taskJSON;
+    }else{
+        taskList = JSON.parse(taskJSON);
+    }
+
 }
+
+
 
 console.log(taskList);
 //showContent();
@@ -29,8 +36,6 @@ console.log(list);
             taskList.splice(removeId,1);
             renderList();
             console.log(e.target.parentNode.parentNode.parentNode.id);
-            //console.log(e.target.parentNode.parentNode.parentNode.parentNode
-                //.removeChild(e.target.parentNode.parentNode.parentNode));
         }
     });
 
@@ -77,6 +82,7 @@ function renderList(){
         btnDel.appendChild(imgDel);
     })
     saveLocal();
+    countTask();
 }
 
 document.querySelector('#addtxt')
@@ -104,5 +110,13 @@ function defaultInput(){
 
 
 function saveLocal(){
-    localStorage.setItem(JSON.stringify(taskList));
+    var json = JSON.stringify(taskList);
+    localStorage.setItem('tasklist',json);
+}
+
+function countTask(){
+    var remain = taskList.length;
+    document.querySelector('.footer__count')
+        .innerText = remain;
+
 }
