@@ -46,15 +46,15 @@
       } else {
         if (Tools.removeElement) {
           removeTest.addEventListener('click', function (event) {
-            Tools.removeElement(event.target);
+            Tools.removeElement(event.target);                    //defines what we want to delete
           });
         } else {
           //console.log('Mir fehlt die removeElement Funktion');
         }
         if (Tools.delegate) {                   //here the remove function is executed
-            parentList.addEventListener('click', Tools.delegate('li button', function (event) {
+            parentList.addEventListener('click', Tools.delegate('li button', function (event) { //Tools.delegate is called by Load(no click)
             //console.log('Delegate hat schon mal funktioniert');
-            Tools.removeElement(event.target.parentNode);
+            Tools.removeElement(event.target.parentNode);         //defines what we want to delete
             //console.log('Ist das element verschwunden?');
           }));
         } else {
