@@ -1,41 +1,57 @@
 var App = (function(t){
 
-var init = function(){
-    var taskJSON = [];/*'[{"tod":"Salat"},{"tod":"Milch"}]';*/ //only for testing
+var taskJSON = [];/*'[{"tod":"Salat"},{"tod":"Milch"}]';*/ //only for testing
+var taskList;      // = JSON.parse(taskJSON);
+var list = document.querySelector('.todo__list');
+var inputTxt = document.querySelector('#addtxt');
+var checkDone;
+var listKey = 'tasklist'; //key for local storage
 
-    var taskList;// = JSON.parse(taskJSON);
-
-    if(localStorage.getItem('tasklist')){
-        taskList = JSON.parse(localStorage.getItem('tasklist'));
+var init = function(){ //START init function
+    console.log(taskList);
+    //load from local storage if not empty
+    if(t.checkLocalStorage(listKey)){
+        console.log('local storage NOT empty');
+        taskList = t.pullLocal(listKey);
     }else{
-        if(!localStorage.getItem('tasklist')){
+        if(!t.checkLocalStorage(listKey)){
+            console.log('local storage EMPTY');
             taskList = taskJSON;
         }else{
+            console.log('local storage NOT empty');
             taskList = JSON.parse(taskJSON);
         }
-
     }
 
 
+    //eventListener to remove list item
+    list.addEventListener('click',t.delegate('li .list__removeicon',function(e){
 
-    console.log(taskList);
+            t.removeElement(e.target.parentNode.parentNode.parentNode.id,taskList);
+            renderList();
+    }));
 
-    var list = document.querySelector('.todo__list');
-    console.log(list);
 
-    //remove list item
-       list.addEventListener('click',Tools.delegate('li .list__removeicon',function(e){
-            //if(e.target && e.target.matches('li .list__removeicon')){
-                Tools.removeElement(e.target.parentNode.parentNode.parentNode.id,taskList);
-                //var removeId = e.target.parentNode.parentNode.parentNode.id;
-                //taskList.splice(removeId,1);
-                renderList();
-            //}
-        }));
+    //eventListener to add new item
+    inputTxt.addEventListener('keydown',addNewItem);
+
+    //eventListener to mark done task
+    list.addEventListener('click',t.delegate('li .taskdone',function(e){
+        //console.log(e.target.parentNode.parentNode.firstChild.nextSibling);
+        var taskId = e.target.parentNode.parentNode.id;
+        if(e.target){
+            e.target.parentNode.parentNode.firstChild.nextSibling.classList.add('list__txt--done');
+            taskList.splice(taskId,0,{done:true});
+        }else{
+            taskList.splice(taskId,0,{done:false});
+        }
+        renderList();
+
+    }))
 
     renderList();
     function renderList(){
-        //console.log(list);
+        console.log('renderList');
         list.innerHTML = ''; //delete li elements(means the list content)
         taskList.forEach(function(element,index){
             console.log(element.todo,index);
@@ -46,10 +62,11 @@ var init = function(){
             var boxCheck = document.createElement('div');
             boxCheck.classList.add('list__taskdone');
             var inputCheck = document.createElement('input');
-            inputCheck.setAttribute('id','taskdone_2');//CHANGE the id, remove _2!!!
+            inputCheck.setAttribute('id','taskdone_'+index);//CHANGE the id, remove _2!!!
             inputCheck.setAttribute('type','checkbox');
+            inputCheck.classList.add('taskdone');
             var labelCheck = document.createElement('label');
-            labelCheck.setAttribute('for','taskdone_2');
+            labelCheck.setAttribute('for','taskdone_'+index);
             var labelInner = document.createElement('span');
 
             //itemtext
@@ -75,18 +92,18 @@ var init = function(){
             boxDel.appendChild(btnDel)
             btnDel.appendChild(imgDel);
         })
-        saveLocal();
+        //saveLocal
+        t.saveLocal(listKey,taskList);
+        //count remaining task
         countTask();
     }
 
-    document.querySelector('#addtxt')
-         .addEventListener('keydown',addNewItem);
 
     function addNewItem(e){
 
         if(e.code === 'Enter'){
             var inputTxt = getInput();
-            taskList.push({todo:inputTxt});
+            taskList.push({todo:inputTxt},{done:false});
             defaultInput();
             renderList();
         }
@@ -100,12 +117,6 @@ var init = function(){
     function defaultInput(){
         return document.querySelector('#addtxt')
             .value = '';
-    }
-
-
-    function saveLocal(){
-        var json = JSON.stringify(taskList);
-        localStorage.setItem('tasklist',json);
     }
 
     function countTask(){
