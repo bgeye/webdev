@@ -1,0 +1,79 @@
+<html>
+  <head>
+    <style>
+      * {
+        margin: 10px;
+        padding: 5px;
+        font-family: "Helvetica Neue", sans-serif;
+        font-weight: 300;
+      }
+      </style>
+  </head>
+  <body>
+    <h1>Liste per XHR laden</h1>
+
+    <ul id="liste"></ul>
+    <script>
+      /* Aufgabe:
+       * Erstelle eine Funktion, welche beim Laden der Seite einen XHR-Get
+       * Request auf die folgende Seite macht: http://localhost:3002/json
+       *
+       * Beim Aufruf erhälst du eine JSON Antwort. Für die darin enthaltenen Einträge,
+       * sollst du jeweils einen LI-Element erstellen und oben in die das UL mit der id
+       * #liste einfügen.
+       *
+       * Erwartetes Resultat:
+       *
+       * <ul id="liste">
+       * <li>Bart Simpson (10)</li>
+       * <li>Homer Simpson (36)</li>
+       * <li>Lisa Simpson (8)</li>
+       * <li>Marge Simpson (34)</li>
+       * <li>Hugo Simpson (10)</li>
+       * </ul>
+       *
+       * Damit der Aufruf gelingt, muss das "Backend" laufen. Geh in den Ordner backend und führe folgendes aus:
+       * npm install
+       * npm start
+       * Jetzt sollte sowas stehen: "Fake Todo Backend listening on port 3002!"
+      */
+
+      var request = new XMLHttpRequest();
+      request.open('GET','http://localhost:3002/json',true);
+
+      request.onload = function(){
+          if(request.status >= 200 && request.status < 400){
+              console.log(request.responseText);
+              var data = JSON.parse(request.responseText);
+              console.log(data);
+              createListItem(data);
+          }else{
+              //Server error
+              console.log('request sent but server sends error');
+          }
+      }
+
+      request.onerror = function(){
+          //Server not reachable
+          console.log('server not reached');
+      }
+
+      request.send();
+
+      function createListItem(data){
+          var list = document.querySelector('#liste');
+          data.forEach(function(element,index){
+              var listItem = document.createElement('li');
+              listItem.innerHTML = element.firstname+' '+element.name+' ('+element.age+')';
+              list.appendChild(listItem);
+          })
+
+
+      }
+
+
+    </script>
+  </body>
+</html>
+
+

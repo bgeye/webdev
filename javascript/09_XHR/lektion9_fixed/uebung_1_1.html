@@ -1,0 +1,82 @@
+<html>
+  <head>
+    <style>
+      * {
+        margin: 10px;
+        padding: 5px;
+        font-family: "Helvetica Neue", sans-serif;
+        font-weight: 300;
+      }
+      </style>
+  </head>
+  <body>
+    <h1>Happyness Generator</h1>
+
+    <button id="execute-request">neues Gif laden</button>
+    <div id="container"></div>
+    <script>
+      /* Aufgabe:
+       * Erstelle eine Funktion genannt getGif, welche beim klick auf den Button ausgeführt wird.
+       *
+       * Die Funktion soll einen Get-Request ausführen auf die URL:
+       *  https://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&limit=1&tag=puppy
+       *
+       * Bei jedem Aufruf erhälst du eine JSON Antwort, welche die URL zu einem Gif enthält.
+       * Entferne das vorherige IMG element (sofern vorhanden),
+       * erstelle im DOM ein neues IMG Element mit der URL des erhaltenen Gifs als src Wert und
+       * setzte das erstelle IMG Element in das #container div.
+       *
+       * Tipp: Die URL des Bildes befindet sich unter data.image_url in der JSON Antwort.
+       *       Die JSON Antwort musst du natürlich erst umwandeln
+       * Erwartetes Resultat:
+        - Bei jedem klick auf "neues Gif laden" wird ein neues Bild angezeigt
+      */
+
+      var url = 'https://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&limit=1&tag=puppy';
+
+      document.querySelector('#execute-request').addEventListener('click', getGif);
+      var container = document.querySelector('#container');
+
+      function getGif() {
+        // Code fürs abrufen kommt hierhin
+        var request = new XMLHttpRequest();
+        request.open('GET',url,true);
+        request.onload = function(){
+            if(request.status >= 200 && request.status < 400){
+              var data = JSON.parse(request.responseText);
+              console.log(data);
+              setGif(data);
+            }else{
+                console.log('server error');
+            }
+        };
+
+        request.onerror = function(){
+            console.log('server not reachable');
+        }
+
+        request.send();
+      }
+
+      function setGif(data){
+
+          var url = data.data.image_url;
+          console.log(url);
+          var container = document.querySelector('#container');
+
+          var pic = document.createElement('img');
+          pic.setAttribute('src',url);
+
+          if(container.hasChildNodes()){
+              container.innerHTML = '';
+              container.appendChild(pic);
+          }else{
+              container.appendChild(pic);
+          }
+      }
+
+    </script>
+  </body>
+</html>
+
+
