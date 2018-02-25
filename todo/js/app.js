@@ -6,51 +6,79 @@ var list = document.querySelector('.todo__list');
 var inputTxt = document.querySelector('#addtxt');
 var checkDone;
 var listKey = 'tasklist'; //key for local storage
+var url = 'http://localhost:3002/todos';
+var localData = t.checkLocalStorage(listKey);
+
+//var getRes;
 
 var init = function(){ //START init function
-    console.log(taskList);
-    //load from local storage if not empty
-    if(t.checkLocalStorage(listKey)){
-        console.log('local storage NOT empty');
-        taskList = t.pullLocal(listKey);
-    }else{
-        if(!t.checkLocalStorage(listKey)){
-            console.log('local storage EMPTY');
-            taskList = taskJSON;
-        }else{
-            console.log('local storage NOT empty');
-            taskList = JSON.parse(taskJSON);
-        }
-    }
 
+    //load from local storage
+    // this is a synchron function!!!
+    load();
 
-    //eventListener to remove list item
+    //render list 1st run --> timeout for reload in case async response will be late...
+    //TODO: find better solution
+    setTimeout(function(){
+        renderList();
+    },100);
+
+    //eventListener to remove list item TODO: create remove function
     list.addEventListener('click',t.delegate('li .list__removeicon',function(e){
 
             t.removeElement(e.target.parentNode.parentNode.parentNode.id,taskList);
             renderList();
+            save();
     }));
 
 
     //eventListener to add new item
     inputTxt.addEventListener('keydown',addNewItem);
 
-    //eventListener to mark done task
+    //eventListener to mark done task TODO: create done function
     list.addEventListener('click',t.delegate('li .taskdone',function(e){
-        //console.log(e.target.parentNode.parentNode.firstChild.nextSibling);
         var taskId = e.target.parentNode.parentNode.id;
-        if(e.target){
-            e.target.parentNode.parentNode.firstChild.nextSibling.classList.add('list__txt--done');
-            taskList.splice(taskId,0,{done:true});
+        console.log('before: '+taskList[taskId].done);
+        if(taskList[taskId].done == false){
+
+            taskList[taskId].done = true;
+            console.log('after: '+taskList[taskId].done);
         }else{
-            taskList.splice(taskId,0,{done:false});
+
+            taskList[taskId].done = false;
+            console.log('after: '+taskList[taskId].done);
         }
+
         renderList();
+        save();
 
     }))
 
-    renderList();
+
+
+
+    function load(){
+        if(localData){
+            taskList = t.pullLocal(listKey);
+        }else{
+
+            //this is a asynchron function so wait for status = 200 (this code will be executed even the response
+            // from server is not already here)
+            t.get(url,function(data){//wait for status 200 -> solved temporary with timeout function for renderList()
+                console.log(data);
+                if(data){
+
+                    taskList = data;
+                }else{
+                    taskList = taskJSON;
+                }
+            });
+
+        }
+    }
+
     function renderList(){
+        console.log(taskList);
         console.log('renderList');
         list.innerHTML = ''; //delete li elements(means the list content)
         taskList.forEach(function(element,index){
@@ -64,6 +92,11 @@ var init = function(){ //START init function
             var inputCheck = document.createElement('input');
             inputCheck.setAttribute('id','taskdone_'+index);//CHANGE the id, remove _2!!!
             inputCheck.setAttribute('type','checkbox');
+            if(element.done == true){
+                inputCheck.checked = true;
+            }else{
+                inputCheck.checked = false;
+            }
             inputCheck.classList.add('taskdone');
             var labelCheck = document.createElement('label');
             labelCheck.setAttribute('for','taskdone_'+index);
@@ -72,6 +105,12 @@ var init = function(){ //START init function
             //itemtext
             var txtInner = document.createElement('span');
             txtInner.classList.add('list__txt');
+            if(element.done == true){
+                txtInner.classList.add('list__txt--done');
+            }else{
+                txtInner.classList.remove('list__txt--done');
+            }
+
 
             //delbox
             var boxDel = document.createElement('div');
@@ -88,12 +127,11 @@ var init = function(){ //START init function
             boxCheck.appendChild(labelCheck);
             labelCheck.appendChild(labelInner);
             listItem.appendChild(txtInner).innerHTML = element.todo;
-            listItem.appendChild(boxDel)
-            boxDel.appendChild(btnDel)
+            listItem.appendChild(boxDel);
+            boxDel.appendChild(btnDel);
             btnDel.appendChild(imgDel);
         })
-        //saveLocal
-        t.saveLocal(listKey,taskList);
+
         //count remaining task
         countTask();
     }
@@ -103,13 +141,20 @@ var init = function(){ //START init function
 
         if(e.code === 'Enter'){
             var inputTxt = getInput();
-            taskList.push({todo:inputTxt},{done:false});
-            defaultInput();
-            renderList();
+            if(inputTxt){
+                taskList.push({todo:inputTxt,done:false});
+                defaultInput();
+                renderList();
+                save();
+            }else{
+                alert('Bitte erfasse ein neues Todo!');
+            }
+
         }
     }
 
     function getInput(){
+
         return document.querySelector('#addtxt')
             .value
     }
@@ -120,10 +165,24 @@ var init = function(){ //START init function
     }
 
     function countTask(){
+        var empty =  0;
         var remain = taskList.length;
-        document.querySelector('.footer__count')
-            .innerText = remain;
+        var counter = document.querySelector('.footer__count');
+        if(taskList.length){
+            counter.innerText = remain;
+        }else{
+            counter.innerText = empty;
+        }
 
+
+    }
+
+    //save local and on server
+    function save(){
+        t.saveLocal(listKey,taskList);
+        t.post(url,taskList,function(res){
+            console.log('saved!'+res);
+        });
     }
 }; //END of init function
     return{

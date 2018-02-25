@@ -31,11 +31,51 @@ var Tools = (function(){
         }
     }
 
+    var post = function(url,content,callback){
+        var request = new XMLHttpRequest();
+        request.open('POST',url,true);
+        request.setRequestHeader("Content-Type","application/json");
+        var data = JSON.stringify(content);
+
+        request.onload = function(){
+            if(request.status >= 200 && request.status < 400){
+                var res = JSON.parse(request.responseText);
+                console.log(res);
+                callback(res);
+            }else{
+            console.log('server error');
+            }
+        }
+        request.send(data);
+    }
+
+    var get = function(url,callback){
+        var request = new XMLHttpRequest();
+        request.open('GET',url);
+
+        request.onload = function(){
+            if(request.status >= 200 && request.status < 400){
+                var data = JSON.parse(request.responseText);
+                callback(data);
+            }else{
+                console.log('Server Error');
+            }
+        };
+
+        request.onerror = function(){
+            console.log('Server ist nicht erreichbar!');
+        }
+        request.send();
+
+    }
+
     return{
         delegate: delegate,
         removeElement: removeElement,
         saveLocal: saveLocal,
         pullLocal: pullLocal,
-        checkLocalStorage: checkLocalStorage
+        checkLocalStorage: checkLocalStorage,
+        post: post,
+        get: get
     };
 })()
