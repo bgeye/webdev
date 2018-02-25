@@ -2,8 +2,12 @@ var App = (function(t){
 
 var taskJSON = [];/*'[{"tod":"Salat"},{"tod":"Milch"}]';*/ //only for testing
 var taskList;      // = JSON.parse(taskJSON);
+var taskListAll;
+var taskListTodo;
+var taskListDone;
 var list = document.querySelector('.todo__list');
 var inputTxt = document.querySelector('#addtxt');
+var taskFilter = document.querySelector('.todo__footer');
 var checkDone;
 var listKey = 'tasklist'; //key for local storage
 var url = 'http://localhost:3002/todos';
@@ -13,8 +17,7 @@ var localData = t.checkLocalStorage(listKey);
 
 var init = function(){ //START init function
 
-    //load from local storage
-    // this is a synchron function!!!
+    //load from local or external storage
     load();
 
     //render list 1st run --> timeout for reload in case async response will be late...
@@ -23,7 +26,7 @@ var init = function(){ //START init function
         renderList();
     },100);
 
-    //eventListener to remove list item TODO: create remove function
+    //eventListener to remove list item
     list.addEventListener('click',t.delegate('li .list__removeicon',function(e){
 
             t.removeElement(e.target.parentNode.parentNode.parentNode.id,taskList);
@@ -34,6 +37,30 @@ var init = function(){ //START init function
 
     //eventListener to add new item
     inputTxt.addEventListener('keydown',addNewItem);
+
+    //eventListener for taskfilter
+    taskFilter.addEventListener('click',t.delegate('.todo__footer button',function(e){
+        //console.log(e.target.id);
+         //taskListAll = taskList;
+        switch(e.target.id){
+            case 'all':
+                taskListAll = taskList;
+                renderList(taskListAll);
+                break;
+            case 'todo':
+                taskListTodo = taskList.filter(function(item){
+                    return item.done == false;
+                })
+                renderList(taskListTodo);
+                break;
+            case 'done':
+                taskListDone = taskListTodo = taskList.filter(function(item){
+                    return item.done == true;
+                })
+                renderList(taskListDone);
+                break;
+        }
+    }));
 
     //eventListener to mark done task TODO: create done function
     list.addEventListener('click',t.delegate('li .taskdone',function(e){
@@ -77,11 +104,18 @@ var init = function(){ //START init function
         }
     }
 
-    function renderList(){
+    function renderList(filterItems){
         console.log(taskList);
         console.log('renderList');
+        var filterList;
+        if(filterItems){
+            filterList = filterItems;
+        }else{
+            filterList = taskList; //if
+        }
+
         list.innerHTML = ''; //delete li elements(means the list content)
-        taskList.forEach(function(element,index){
+        filterList.forEach(function(element,index){
             console.log(element.todo,index);
             var listItem = document.createElement('li');
             listItem.classList.add('list__item','list__item--show');
