@@ -8,12 +8,9 @@ var taskListDone;
 var list = document.querySelector('.todo__list');
 var inputTxt = document.querySelector('#addtxt');
 var taskFilter = document.querySelector('.todo__footer');
-var checkDone;
 var listKey = 'tasklist'; //key for local storage
 var url = 'http://localhost:3002/todos';
 var localData = t.checkLocalStorage(listKey);
-
-//var getRes;
 
 var init = function(){ //START init function
 
@@ -26,64 +23,7 @@ var init = function(){ //START init function
         renderList();
     },100);
 
-    //eventListener to remove list item
-    list.addEventListener('click',t.delegate('li .list__removeicon',function(e){
-
-            t.removeElement(e.target.parentNode.parentNode.parentNode.id,taskList);
-            renderList();
-            save();
-    }));
-
-
-    //eventListener to add new item
-    inputTxt.addEventListener('keydown',addNewItem);
-
-    //eventListener for taskfilter
-    taskFilter.addEventListener('click',t.delegate('.todo__footer button',function(e){
-        //console.log(e.target.id);
-         //taskListAll = taskList;
-        switch(e.target.id){
-            case 'all':
-                taskListAll = taskList;
-                renderList(taskListAll);
-                break;
-            case 'todo':
-                taskListTodo = taskList.filter(function(item){
-                    return item.done == false;
-                })
-                renderList(taskListTodo);
-                break;
-            case 'done':
-                taskListDone = taskListTodo = taskList.filter(function(item){
-                    return item.done == true;
-                })
-                renderList(taskListDone);
-                break;
-        }
-    }));
-
-    //eventListener to mark done task TODO: create done function
-    list.addEventListener('click',t.delegate('li .taskdone',function(e){
-        var taskId = e.target.parentNode.parentNode.id;
-        console.log('before: '+taskList[taskId].done);
-        if(taskList[taskId].done == false){
-
-            taskList[taskId].done = true;
-            console.log('after: '+taskList[taskId].done);
-        }else{
-
-            taskList[taskId].done = false;
-            console.log('after: '+taskList[taskId].done);
-        }
-
-        renderList();
-        save();
-
-    }))
-
-
-
-
+    //functions
     function load(){
         if(localData){
             taskList = t.pullLocal(listKey);
@@ -187,6 +127,50 @@ var init = function(){ //START init function
         }
     }
 
+    function removeItem(e){
+        t.removeElement(e.target.parentNode.parentNode.parentNode.id,taskList);
+        renderList();
+        save();
+    }
+
+    function filterItems(e){
+        switch(e.target.id){
+            case 'all':
+                taskListAll = taskList;
+                renderList(taskListAll);
+                break;
+            case 'todo':
+                taskListTodo = taskList.filter(function(item){
+                    return item.done == false;
+                })
+                renderList(taskListTodo);
+                break;
+            case 'done':
+                taskListDone = taskListTodo = taskList.filter(function(item){
+                    return item.done == true;
+                })
+                renderList(taskListDone);
+                break;
+        }
+    }
+
+    function statusItem(e){
+        var taskId = e.target.parentNode.parentNode.id;
+        console.log('before: '+taskList[taskId].done);
+        if(taskList[taskId].done == false){
+
+            taskList[taskId].done = true;
+            console.log('after: '+taskList[taskId].done);
+        }else{
+
+            taskList[taskId].done = false;
+            console.log('after: '+taskList[taskId].done);
+        }
+
+        renderList();
+        save();
+    }
+
     function getInput(){
 
         return document.querySelector('#addtxt')
@@ -207,8 +191,6 @@ var init = function(){ //START init function
         }else{
             counter.innerText = empty;
         }
-
-
     }
 
     //save local and on server
@@ -218,6 +200,14 @@ var init = function(){ //START init function
             console.log('saved!'+res);
         });
     }
+
+
+    //eventListeners
+    inputTxt.addEventListener('keydown',addNewItem);
+    list.addEventListener('click',t.delegate('li .list__removeicon',removeItem));
+    taskFilter.addEventListener('click',t.delegate('.todo__footer button',filterItems));
+    list.addEventListener('click',t.delegate('li .taskdone',statusItem));
+
 }; //END of init function
     return{
         init:init
