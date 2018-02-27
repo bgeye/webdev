@@ -14,39 +14,47 @@ var localData = t.checkLocalStorage(listKey);
 
 var init = function(){ //START init function
 
+    //eventListeners
+    inputTxt.addEventListener('keydown',addNewItem);
+    list.addEventListener('click',t.delegate('li .list__removeicon',removeItem));
+    taskFilter.addEventListener('click',t.delegate('.todo__footer button',filterItems));
+    list.addEventListener('click',t.delegate('li .taskdone',statusItem));
+
+}; //END of init function
+
+
     //load from local or external storage
     load();
-
-    //render list 1st run --> timeout for reload in case async response will be late...
-    //TODO: find better solution
-    setTimeout(function(){
-        renderList();
-    },100);
 
     //functions
     function load(){
         if(localData){
             taskList = t.pullLocal(listKey);
-        }else{
+            renderList();
+        }else if(!localData){
 
             //this is a asynchron function so wait for status = 200 (this code will be executed even the response
             // from server is not already here)
             t.get(url,function(data){//wait for status 200 -> solved temporary with timeout function for renderList()
-                console.log(data);
                 if(data){
 
                     taskList = data;
+                    renderList();
+
                 }else{
                     taskList = [];
+                    renderList();
                 }
+
             });
 
+        }else{
+            taskList = [];
+            renderList();
         }
     }
 
     function renderList(filterItems){
-        console.log(taskList);
-        console.log('renderList');
         var filterList;
         if(filterItems){
             filterList = filterItems;
@@ -56,7 +64,6 @@ var init = function(){ //START init function
 
         list.innerHTML = ''; //delete li elements(means the list content)
         filterList.forEach(function(element,index){
-            console.log(element.todo,index);
             var listItem = document.createElement('li');
             listItem.classList.add('list__item','list__item--show');
             listItem.id = index;
@@ -156,15 +163,12 @@ var init = function(){ //START init function
 
     function statusItem(e){
         var taskId = e.target.parentNode.parentNode.id;
-        console.log('before: '+taskList[taskId].done);
         if(taskList[taskId].done == false){
 
             taskList[taskId].done = true;
-            console.log('after: '+taskList[taskId].done);
         }else{
 
             taskList[taskId].done = false;
-            console.log('after: '+taskList[taskId].done);
         }
 
         renderList();
@@ -197,18 +201,12 @@ var init = function(){ //START init function
     function save(){
         t.saveLocal(listKey,taskList);
         t.post(url,taskList,function(res){
-            console.log('saved!'+res);
+
         });
     }
 
 
-    //eventListeners
-    inputTxt.addEventListener('keydown',addNewItem);
-    list.addEventListener('click',t.delegate('li .list__removeicon',removeItem));
-    taskFilter.addEventListener('click',t.delegate('.todo__footer button',filterItems));
-    list.addEventListener('click',t.delegate('li .taskdone',statusItem));
 
-}; //END of init function
     return{
         init:init
     };
