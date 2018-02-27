@@ -1,6 +1,6 @@
 var App = (function(t){
 
-var taskJSON = [];/*'[{"tod":"Salat"},{"tod":"Milch"}]';*/ //only for testing
+//var taskJSON = [];/*'[{"tod":"Salat"},{"tod":"Milch"}]';*/ //only for testing
 var taskList;      // = JSON.parse(taskJSON);
 var taskListAll;
 var taskListTodo;
@@ -37,7 +37,7 @@ var init = function(){ //START init function
 
                     taskList = data;
                 }else{
-                    taskList = taskJSON;
+                    taskList = [];
                 }
             });
 
