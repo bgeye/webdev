@@ -14,3 +14,4 @@ function (e.g. function in var App = ....)will be executed immediately
 returned is then an object which contains all functions
 
 init function should contain event binding
+the rest of functions has not to be in the init function

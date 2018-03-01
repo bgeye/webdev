@@ -2,6 +2,16 @@
 wieso return function innerhalb delegate -> würde das Ausführen der function
 nicht genügen?
 
+diese funktion wird bei click ausgeführt, die funktion welche gerufen wird
+ist im prinzip diese, welche in der einfachen definition eines eventlisteners
+definiert wird und bei einem event gerufen wird; also ganz einfach :-)
+
+this function will be executed by click -> it's like the function
+which is defined in the eventlistener
+
+#####rendern
+rendern nach delegate erst in callback function
+
 ###post
 response bei server error auch an callback übergeben?
 successCallback
@@ -11,7 +21,8 @@ errorCallback
 response bei request.onload(if false) und request.onerror 
 auch an callback übergeben?
 
-wie mehrere requests handel
+successCallback
+errorCallback
 
 request.onload checkt nicht dass response da ist, deshalb checken mit 
 if request.status
@@ -25,11 +36,8 @@ Reihenfolge -> Funktion wird aufgerufen
 
 
 
-###rendern
-rendern nach delegate erst in callback function
 
 
-###return function in delegate
 
-this function will be executed by click -> it's like the function
-which is defined in the eventlistener
+
+
