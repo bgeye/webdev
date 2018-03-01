@@ -31,7 +31,7 @@ var Tools = (function(){
         }
     }
 
-    var post = function(url,content,callback){
+    var post = function(url,content,responseCallback,errorCallback){
         var request = new XMLHttpRequest();
         request.open('POST',url,true);
         request.setRequestHeader("Content-Type","application/json");
@@ -40,30 +40,38 @@ var Tools = (function(){
         request.onload = function(){
             if(request.status >= 200 && request.status < 400){
                 var res = JSON.parse(request.responseText);
-                console.log(res);
-                callback(res);
+                //console.log(res);
+                responseCallback(res);
             }else{
-            console.log('server error');
+            //console.log('server error');
+            errorCallback('Server Error: Daten konnten nicht gespeichert werden!');
             }
+        }
+
+        request.onerror = function(){
+            //console.log('Server ist nicht erreichbar!');
+            errorCallback('POST: Server ist nicht erreichbar!');
         }
         request.send(data);
     }
 
-    var get = function(url,callback){
+    var get = function(url,responseCallback,errorCallback){
         var request = new XMLHttpRequest();
-        request.open('GET',url);
+        request.open('GET',url,true);
 
         request.onload = function(){
             if(request.status >= 200 && request.status < 400){
                 var data = JSON.parse(request.responseText);
-                callback(data);
+                responseCallback(data);
             }else{
-                console.log('Server Error');
+                //console.log('Server Error');
+                errorCallback('Server Error: Daten konnten nicht geladen werden!');
             }
         };
 
         request.onerror = function(){
-            console.log('Server ist nicht erreichbar!');
+            //console.log('Server ist nicht erreichbar!');
+            errorCallback('Server ist nicht erreichbar!');
         }
         request.send();
 

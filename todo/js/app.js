@@ -1,7 +1,7 @@
 var App = (function(t){
 
 //var taskJSON = [];/*'[{"tod":"Salat"},{"tod":"Milch"}]';*/ //only for testing
-var taskList;      // = JSON.parse(taskJSON);
+var taskList = [];      // = JSON.parse(taskJSON);
 var taskListAll;
 var taskListTodo;
 var taskListDone;
@@ -12,22 +12,21 @@ var listKey = 'tasklist'; //key for local storage
 var url = 'http://localhost:3002/todos';
 var localData = t.checkLocalStorage(listKey);
 
-var init = function(){ //START init function
+//init function
+var init = function(){
 
-    //eventListeners
+    //bind eventListeners
     inputTxt.addEventListener('keydown',addNewItem);
-    list.addEventListener('click',t.delegate('li .list__removeicon',removeItem));
-    taskFilter.addEventListener('click',t.delegate('.todo__footer button',filterItems));
-    list.addEventListener('click',t.delegate('li .taskdone',statusItem));
-
-}; //END of init function
-
-
+    list.addEventListener('click',t.delegate('li .list__removeicon',removeItem));       //t.delegate is executend on load of file
+    taskFilter.addEventListener('click',t.delegate('.todo__footer button',filterItems)); //""
+    list.addEventListener('click',t.delegate('li .taskdone',statusItem));                //""
     //load from local or external storage
     load();
+};
+
 
     //functions
-    function load(){
+    var load = function(){
         if(localData){
             taskList = t.pullLocal(listKey);
             renderList();
@@ -36,16 +35,14 @@ var init = function(){ //START init function
             //this is a asynchron function so wait for status = 200 (this code will be executed even the response
             // from server is not already here)
             t.get(url,function(data){//wait for status 200 -> solved temporary with timeout function for renderList()
-                if(data){
 
                     taskList = data;
                     renderList();
 
-                }else{
-                    taskList = [];
-                    renderList();
-                }
-
+            },function(error){
+                alert(error);
+                taskList = [];
+                renderList();
             });
 
         }else{
@@ -54,15 +51,15 @@ var init = function(){ //START init function
         }
     }
 
-    function renderList(filterItems){
+    var renderList = function(filterItems){
         var filterList;
         if(filterItems){
             filterList = filterItems;
         }else{
-            filterList = taskList; //if
+            filterList = taskList;
         }
 
-        list.innerHTML = ''; //delete li elements(means the list content)
+        list.innerHTML = ''; //delete li elements
         filterList.forEach(function(element,index){
             var listItem = document.createElement('li');
             listItem.classList.add('list__item','list__item--show');
@@ -118,29 +115,30 @@ var init = function(){ //START init function
     }
 
 
-    function addNewItem(e){
+    var addNewItem = function(e){
 
         if(e.code === 'Enter'){
             var inputTxt = getInput();
             if(inputTxt){
+                console.log(inputTxt);
                 taskList.push({todo:inputTxt,done:false});
                 defaultInput();
                 renderList();
                 save();
+
             }else{
                 alert('Bitte erfasse ein neues Todo!');
             }
-
         }
     }
 
-    function removeItem(e){
+    var removeItem = function(e){
         t.removeElement(e.target.parentNode.parentNode.parentNode.id,taskList);
         renderList();
         save();
     }
 
-    function filterItems(e){
+    var filterItems = function(e){
         switch(e.target.id){
             case 'all':
                 taskListAll = taskList;
@@ -153,7 +151,7 @@ var init = function(){ //START init function
                 renderList(taskListTodo);
                 break;
             case 'done':
-                taskListDone = taskListTodo = taskList.filter(function(item){
+                taskListDone = taskList.filter(function(item){
                     return item.done == true;
                 })
                 renderList(taskListDone);
@@ -161,7 +159,7 @@ var init = function(){ //START init function
         }
     }
 
-    function statusItem(e){
+    var statusItem = function(e){
         var taskId = e.target.parentNode.parentNode.id;
         if(taskList[taskId].done == false){
 
@@ -175,18 +173,18 @@ var init = function(){ //START init function
         save();
     }
 
-    function getInput(){
+    var getInput = function(){
 
         return document.querySelector('#addtxt')
             .value
     }
 
-    function defaultInput(){
+    var defaultInput = function(){
         return document.querySelector('#addtxt')
             .value = '';
     }
 
-    function countTask(){
+    var countTask = function(){
         var empty =  0;
         var remain = taskList.length;
         var counter = document.querySelector('.footer__count');
@@ -198,17 +196,20 @@ var init = function(){ //START init function
     }
 
     //save local and on server
-    function save(){
+    var save = function (){
         t.saveLocal(listKey,taskList);
-        t.post(url,taskList,function(res){
-
+        t.post(url,taskList,function(response){
+            //alert(response);
+            console.log(response);
+        },function(error){
+            alert(error);
         });
     }
-
 
 
     return{
         init:init
     };
+
 })(Tools);
 App.init();
