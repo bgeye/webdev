@@ -1,4 +1,4 @@
-var App = (function(t){
+var App = (function(t,s){
 
 //var taskJSON = [];/*'[{"tod":"Salat"},{"tod":"Milch"}]';*/ //only for testing
 var taskList = [];      // = JSON.parse(taskJSON);
@@ -8,6 +8,7 @@ var taskListDone;
 var list = document.querySelector('.todo__list');
 var inputTxt = document.querySelector('#addtxt');
 var taskFilter = document.querySelector('.todo__footer');
+var btnSpeech = document.querySelector('#speech');
 var listKey = 'tasklist'; //key for local storage
 var url = 'http://localhost:3002/todos';
 var localData = t.checkLocalStorage(listKey);
@@ -20,6 +21,8 @@ var init = function(){
     list.addEventListener('click',t.delegate('li .list__removeicon',removeItem));       //t.delegate is executend on load of file
     taskFilter.addEventListener('click',t.delegate('.todo__footer button',filterItems)); //""
     list.addEventListener('click',t.delegate('li .taskdone',statusItem));                //""
+    btnSpeech.addEventListener('click',addNewItemSpeech);
+
     //load from local or external storage
     load();
 };
@@ -132,6 +135,19 @@ var init = function(){
         }
     }
 
+
+
+    var addNewItemSpeech = function(){
+        s.listen(function(response){
+            console.log(response);
+            taskList.push({todo:response,done:false});
+            renderList();
+            save();
+        });
+
+    }
+
+
     var removeItem = function(e){
         t.removeElement(e.target.parentNode.parentNode.parentNode.id,taskList);
         renderList();
@@ -211,5 +227,5 @@ var init = function(){
         init:init
     };
 
-})(Tools);
+})(Tools,Speech);
 App.init();
