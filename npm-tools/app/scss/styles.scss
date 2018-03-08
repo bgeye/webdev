@@ -1,0 +1,20 @@
+$darkgrey:#cccccc;
+
+body{
+  background-color: red;
+}
+
+.foo{
+  &__social{
+    color:$darkgrey;
+    width:500px;
+    height:100%;
+    background-color: blue;
+
+
+  }
+}
+
+::placeholder {
+  color: gray;
+}
