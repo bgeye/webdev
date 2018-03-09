@@ -1,11 +1,15 @@
 const gulp = require('gulp');
 
-const autoprefixer = require('gulp-autoprefixer');
-const browserSync = require('browser-sync');
-const jshint = require('gulp-jshint');
-const sass = require('gulp-sass');
-const useref = require('gulp-useref');
-//TODO: continue with uglify ppt 68
+const autoprefixer = require('gulp-autoprefixer'); //browser prefixes
+const browserSync = require('browser-sync');       //browser sync
+const cssnano = require('gulp-cssnano');           //
+const gulpIf = require('gulp-if');                 //define conditions
+const jshint = require('gulp-jshint');             //code quality
+const sass = require('gulp-sass');                 //scss -> css
+const uglify = require('gulp-uglify');             //minimize js
+const useref = require('gulp-useref');             //concatenation
+
+//TODO: continue with uglify ppt 68 -> check css
 
 
 
@@ -42,9 +46,11 @@ gulp.task('lint',function() {
 });
 
 gulp.task('build',function() {
-    return gulp.src('app/*.html') //select html files(build js/css currently)
-        .pipe(useref())           //load code in html file and find syntax to build <!--build-->
-        .pipe(gulp.dest('dist')); //save in dist folder (built final-app to upload by ftp)
+    return gulp.src('app/*.html')      //select html files(build js/css currently)
+        .pipe(useref())                //load code from html file and find syntax to build <!--build-->
+        .pipe(gulpIf('*.js',uglify())) //minimize js files
+        .pipe(gulpIf('*.css',cssnano())) //minimize css files
+        .pipe(gulp.dest('dist'));      //save in dist folder (built final-app to upload by ftp)
 });
 
 gulp.task('watch',['browserSync','sass'],function() {
