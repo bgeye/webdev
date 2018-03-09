@@ -1,0 +1,7 @@
+body {
+  color: white; }
+
+.social {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1;
+  flex: 1 1; }

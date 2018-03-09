@@ -1,1 +1,1 @@
-body{background-color:red}.foo__social{color:#ccc;width:500px;height:100%;background-color:blue}::-webkit-input-placeholder{color:gray}:-ms-input-placeholder,::-ms-input-placeholder{color:gray}::placeholder{color:gray}
+body{background-color:red}.foo__social{color:#ccc;width:500px;height:100%;background-color:blue}::-webkit-input-placeholder{color:gray}:-ms-input-placeholder,::-ms-input-placeholder{color:gray}::placeholder{color:gray}body{color:#fff}.social{-ms-flex:1 1;flex:1 1}
