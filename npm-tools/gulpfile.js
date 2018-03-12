@@ -1,10 +1,14 @@
+'use strict';
+
 const gulp = require('gulp');
 
 const autoprefixer = require('gulp-autoprefixer'); //browser prefixes
 const browserSync = require('browser-sync');       //browser sync
-const cssnano = require('gulp-cssnano');           //
+const cssnano = require('gulp-cssnano');           //minimize css
+const del = require('del');                        //delete defined source
 const gulpIf = require('gulp-if');                 //define conditions
 const jshint = require('gulp-jshint');             //code quality
+const runSequence = require('run-sequence');          //define sequence for tasks
 const sass = require('gulp-sass');                 //scss -> css
 const uglify = require('gulp-uglify');             //minimize js
 const useref = require('gulp-useref');             //concatenation
@@ -45,17 +49,45 @@ gulp.task('lint',function() {
     .pipe(jshint.reporter('default'));
 });
 
-gulp.task('build',function() {
+gulp.task('useref-minify',function() {
     return gulp.src('app/*.html')      //select html files(build js/css currently)
-        .pipe(useref())                //load code from html file and find syntax to build <!--build-->
+        .pipe(useref())                //load code from html file and find syntax to build <!--build--> one file of several in source
         .pipe(gulpIf('*.js',uglify())) //minimize js files
         .pipe(gulpIf('*.css',cssnano())) //minimize css files
         .pipe(gulp.dest('dist'));      //save in dist folder (built final-app to upload by ftp)
 });
 
+
+//watch task -> browserSync and sass in same time!
 gulp.task('watch',['browserSync','sass'],function() {
    gulp.watch('app/scss/**/*.scss',['sass']);
    gulp.watch('app/*.html',browserSync.reload);
    gulp.watch('app/js/**/*.js',browserSync.reload);
 
 });
+
+
+//task to define what to delete
+gulp.task('clean:dist',function() {
+    return del.sync('dist');
+});
+
+//copy task
+gulp.task('copy:img',function() {
+   return gulp.src('app/images/**/*.{png,jpg}')
+       .pipe(gulp.dest('dist/images'));
+});
+
+
+
+//PRALLEL task to define e.g. all clean task(syntac clean:dist, clean:other,...)
+gulp.task('clean',['clean:dist']);
+
+
+//SEQUENCE task to define tasks which have to run each after the other
+
+gulp.task('build',function(callback) {
+    runSequence('clean','sass','useref-minify',['copy:img'],callback);
+});
+
+
