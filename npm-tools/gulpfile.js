@@ -7,13 +7,13 @@ const browserSync = require('browser-sync');       //browser sync
 const cssnano = require('gulp-cssnano');           //minimize css
 const del = require('del');                        //delete defined source
 const gulpIf = require('gulp-if');                 //define conditions
-const jshint = require('gulp-jshint');             //code quality
-const runSequence = require('run-sequence');          //define sequence for tasks
+const jshint = require('gulp-jshint');             //code quality also lint
+const runSequence = require('run-sequence');       //define sequence for tasks
 const sass = require('gulp-sass');                 //scss -> css
 const uglify = require('gulp-uglify');             //minimize js
 const useref = require('gulp-useref');             //concatenation
 
-//TODO: continue with uglify ppt 68 -> check css
+
 
 
 
@@ -51,7 +51,7 @@ gulp.task('lint',function() {
 
 gulp.task('useref-minify',function() {
     return gulp.src('app/*.html')      //select html files(build js/css currently)
-        .pipe(useref())                //load code from html file and find syntax to build <!--build--> one file of several in source
+        .pipe(useref())                //load code from html file and find syntax to concatenate <!--build--> one file of several in source
         .pipe(gulpIf('*.js',uglify())) //minimize js files
         .pipe(gulpIf('*.css',cssnano())) //minimize css files
         .pipe(gulp.dest('dist'));      //save in dist folder (built final-app to upload by ftp)
@@ -59,8 +59,8 @@ gulp.task('useref-minify',function() {
 
 
 //watch task -> browserSync and sass in same time!
-gulp.task('watch',['browserSync','sass'],function() {
-   gulp.watch('app/scss/**/*.scss',['sass']);
+gulp.task('watch',['browserSync','sass'],function() {   //executed tasks after call of watch
+   gulp.watch('app/scss/**/*.scss',['sass']);           //executed task after change in scss file
    gulp.watch('app/*.html',browserSync.reload);
    gulp.watch('app/js/**/*.js',browserSync.reload);
 
@@ -72,7 +72,7 @@ gulp.task('clean:dist',function() {
     return del.sync('dist');
 });
 
-//copy task
+//copy task(copy folder image with png and or jpg files to dist)
 gulp.task('copy:img',function() {
    return gulp.src('app/images/**/*.{png,jpg}')
        .pipe(gulp.dest('dist/images'));
