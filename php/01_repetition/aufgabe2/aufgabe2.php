@@ -37,6 +37,12 @@ function print_task($value){
     echo '</tr>';
 }
 
+/**
+ * berechnet den linux timestamp eines datums, das im definierten date_format ist.
+ * @param $duedate das datum als string
+ * @param string $date_format das datums format, in dem das duedate definiert ist
+ * @return int
+ */
 function getTimestamp($date_string, $date_format = 'Y-m-d') {
     return DateTime::createFromFormat($date_format, $date_string)->getTimestamp();
 }
