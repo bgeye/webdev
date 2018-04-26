@@ -14,10 +14,16 @@
             <li><a href="01_repetition/aufgabe2/aufgabe2.php">Aufgabe 2</a></li>
         </ul>
     </li>
-    <li><span>02_</span></a>
+    <li><span>02_session_cookies_sort</span></a>
         <ul>
-            <li><a href="02_">Link</a></li>
-            <li><a href="02_">Link</a></li>
+            <li><a href="02_session_cookies_sort/aufgabe3/aufgabe3.php">Aufgabe 3</a></li>
+            <li><a href="02_session_cookies_sort/sort/sort.php">Sort</a></li>
+        </ul>
+    </li>
+    <li><span>03_</span></a>
+        <ul>
+            <li><a href="03_">Link</a></li>
+            <li><a href="03_">Link</a></li>
         </ul>
     </li>
 </ul>

@@ -6,8 +6,8 @@ print_r($tasks);
 
 
 //constants
-//get today date and format to seconds to compare with duedate
-$today = getTimestamp(date('Y-m-d'),$date_format = 'Y-m-d');
+//get timestamp
+$today = time();
 
 
 echo '<h1>Tasklist</h1>';
@@ -16,7 +16,7 @@ echo '<tr><th>ID</th><th>Title</th><th>Duedate</th><th>Status</th></tr>';
 
 foreach ($tasks as $value){
     //get duedate in timestamp format to compare with today
-    $duedate = getTimestamp($value['duedate'],$date_format = 'Y-m-d');
+    $duedate = getTimestamp($value['duedate']);
     if($duedate < $today && $value['status']!='done'){
 
         print_task($value);
@@ -43,6 +43,6 @@ function print_task($value){
  * @param string $date_format das datums format, in dem das duedate definiert ist
  * @return int
  */
-function getTimestamp($date_string, $date_format = 'Y-m-d') {
+function getTimestamp($date_string, $date_format = 'Y-m-d') { //parameter no mandatory -> format of date we forward into function
     return DateTime::createFromFormat($date_format, $date_string)->getTimestamp();
 }
