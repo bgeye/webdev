@@ -18,6 +18,7 @@
         <ul>
             <li><a href="02_session_cookies_sort/aufgabe3/aufgabe3.php">Aufgabe 3</a></li>
             <li><a href="02_session_cookies_sort/sort/sort.php">Sort</a></li>
+            <li><a href="02_session_cookies_sort/aufgabe4/aufgabe4.php">Aufgabe 4</a></li>
         </ul>
     </li>
     <li><span>03_</span></a>

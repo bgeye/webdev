@@ -3,69 +3,42 @@ session_start();
 
 require 'tasks.php'; //if include, then code is executed even file is not found
 
+//check if logout is in $_GET
 if(isset($_GET['logout'])){
     unset($_SESSION["username"]);
 }
 
-if(isset($_GET['username'])&&!empty($_GET['username'])) {
+//check if $_GET contains username and this one is not empty
+//set usernmae in $_SESSION variable
+if(isset($_GET['username']) && !empty($_GET['username']) && isset($_GET['username'])=='mario') {
     $username = $_GET['username'];
     //echo $username;
     $_SESSION['username'] = $username;
     //print_r($_SESSION);
-}else{
-
-    echo '<form action="aufgabe3.php" method="GET">';
-    echo '<label id="username">';
-    echo '<input type="text" name="username">';
-    echo '<input type="submit" name="submit" value="login">';
-    echo '</form>';
-    echo '<br><br><br>';
+}elseif(isset($_GET['username']) && !empty($_GET['username']) && isset($_GET['username'])!='mario'&&!isset($_GET['logout'])){
+    echo 'Benutzername ungültig!<br>';
+    echo 'Try again... ;-)';
 }
 
 if(!empty($_SESSION['username']) && $_SESSION['username']=='mario'){
     $username = $_SESSION['username'];
     echo 'Hallo '.$username;
 
-    $today = time();
+    require '../../01_repetition/aufgabe2/aufgabe2.php';
 
-    echo '<h1>Tasklist</h1>';
-    echo '<table>';
-    echo '<tr><th>ID</th><th>Title</th><th>Duedate</th><th>Status</th></tr>';
-
-    foreach ($tasks as $value){
-        //get duedate in timestamp format to compare with today
-        $duedate = getTimestamp($value['duedate']);
-        if($duedate < $today && $value['status']!='done'){
-
-            print_task($value);
-        }
-    }
-    echo '</table>';
     echo '<p></p><a href="?logout">logout</a></p>';
 }else{
+    setLoginForm();
     echo 'Es ist niemand eingeloggt!';
 
 }
 
 
-
-
-//functions
-function print_task($value){
-    echo '<tr>';
-    echo '<td>'.$value['id'].'</td>';
-    echo '<td>'.$value['title'].'</td>';
-    echo '<td>'.$value['duedate'].'</td>';
-    echo '<td>'.$value['status'].'</td>';
-    echo '</tr>';
-}
-
-/**
- * berechnet den linux timestamp eines datums, das im definierten date_format ist.
- * @param $duedate das datum als string
- * @param string $date_format das datums format, in dem das duedate definiert ist
- * @return int
- */
-function getTimestamp($date_string, $date_format = 'Y-m-d') { //parameter no mandatory -> format of date we forward into function
-    return DateTime::createFromFormat($date_format, $date_string)->getTimestamp();
+function setLoginForm(){
+    echo '<form action="aufgabe3.php" method="GET">';
+    echo '<label id="username">';
+    echo '<input type="text" name="username">';
+    echo '<input type="submit" name="submit" value="login">';
+    echo '</form>';
+    echo '<br><br><br>';
 }

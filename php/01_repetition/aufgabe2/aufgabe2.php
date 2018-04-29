@@ -2,7 +2,7 @@
 require 'tasks.php'; //if include, then code is executed even file is not found
 
 
-print_r($tasks);
+//print_r($tasks);
 
 
 //constants
