@@ -2,10 +2,8 @@
 class Task{
     private $title = '';
     function __construct($task_title){
-
-
+        
         $this -> setTitle($task_title);
-
 
     }
 
@@ -19,7 +17,7 @@ class Task{
         $this -> title = $title;
     }
 
-    
+    //call this function from external e.g. instance of class task
     function erledigen(){
         echo 'Task'.$this -> getTitle().' erledigt';
     }
