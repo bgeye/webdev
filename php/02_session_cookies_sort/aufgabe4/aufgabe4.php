@@ -51,15 +51,10 @@ function compare($a,$b){
     //for multidimensional arrays
     return strcmp($a['duedate'],$b['duedate']);
 
+    $duedate1 = $a;
+    $duedate2 = $b;
 
-
-//    if($a < $b){
-//        return -1;
-//    }elseif($a == $b){
-//        return 0;
-//    }else{
-//        return 1;
-//    }
+    
 }
 
 function print_task($value){
