@@ -51,6 +51,8 @@ function compare($a,$b){
     //for multidimensional arrays
     return strcmp($a['duedate'],$b['duedate']);
 
+
+
 //    if($a < $b){
 //        return -1;
 //    }elseif($a == $b){
