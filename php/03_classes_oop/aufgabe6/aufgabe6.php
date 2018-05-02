@@ -16,6 +16,7 @@ class User{
 
     /**
      * @return name
+     * get name of object
      */
     function getName(){
         return $this->name;
@@ -23,6 +24,7 @@ class User{
 
     /**
      * @param $username
+     * set username of instance object
      */
     function setName($username){
         $this->name = $username;
@@ -36,6 +38,6 @@ class User{
     }
 }
 
-$user = new User();
-$user->setName('mario');
-echo $user->get_information();
+$user = new User();                 //create new instance of class User
+$user->setName('mario');  //call function setUsername of instance and set username
+echo $user->get_information();     //call function get_information of instance

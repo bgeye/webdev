@@ -1,7 +1,7 @@
 <?php
 class Task{
     /**
-     * Klassenvariable
+     * classvariable
      * @var string $title
      */
     private $title = '';
@@ -33,21 +33,21 @@ class Task{
     }
 
     /**
-     * call this function from external e.g. instance of class task
+     * call this function from external e.g. instance of class Task
      */
     function erledigen(){
         echo 'Task '.$this -> getTitle().' erledigt!<br>';
     }
 }
 
-$task = new Task('Pause machen');
-$task -> setTitle('mario');
-echo $task->erledigen();
-echo $task -> getTitle();
+$task = new Task('Pause machen');   //create new instance of class Task
+$task -> setTitle('mario');             //call setTitle function of instance $task
+echo $task->erledigen();                     //call erledigen function of instance $task
+echo $task -> getTitle();                    //call getTitle function of instance $task
 
-echo gettype($task);
-echo gettype('mario');
-echo get_class($task);
+echo gettype($task);        //check type of variable -> object
+echo gettype('mario'); //check type of variable -> String
+echo get_class($task);      //get classname of object
 var_dump(new Task('hello')); // does also show how many objects were created
 
 
