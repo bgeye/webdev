@@ -21,10 +21,10 @@
             <li><a href="02_session_cookies_sort/aufgabe4/aufgabe4.php">Aufgabe 4</a></li>
         </ul>
     </li>
-    <li><span>03_</span></a>
+    <li><span>03_classes_oop</span></a>
         <ul>
-            <li><a href="03_">Link</a></li>
-            <li><a href="03_">Link</a></li>
+            <li><a href="03_classes_oop/aufgabe5/aufgabe5.php">Aufgabe 5</a></li>
+            <li><a href="03_classes_oop/aufgabe6/aufgabe6.php">Aufgabe 6</a></li>
         </ul>
     </li>
 </ul>
