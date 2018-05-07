@@ -1,4 +1,5 @@
 <?php
+date_default_timezone_set('Europe/Zurich'); //set timezone, can also be global set in php.ini
 class User{
     /**
      * @var $name,$created
@@ -10,8 +11,9 @@ class User{
      */
     function __construct()
     {
-        date_default_timezone_set('Europe/Zurich'); //set timezone
-        $this->created = date('d.m.Y H:i:s');                //format unix timestamp
+
+        //$this->created = date('d.m.Y H:i:s');                //format unix timestamp
+        $this->created = time();  //get unix timestamp
     }
 
     /**
@@ -34,7 +36,8 @@ class User{
      * String get informations
      */
     function get_information(){
-        echo 'Der Benutzer '.$this->name.' wurde dann erstellt: '.$this->created;
+        $formated_date = date('d.m.Y H:i:s',$this->created);
+        echo 'Der Benutzer '.$this->name.' wurde dann erstellt: '.$formated_date;
     }
 }
 

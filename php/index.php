@@ -27,6 +27,11 @@
             <li><a href="03_classes_oop/aufgabe6/aufgabe6.php">Aufgabe 6</a></li>
         </ul>
     </li>
+    <li><span>04_</span></a>
+        <ul>
+            <li><a href="03_">Aufgabe 7</a></li>
+        </ul>
+    </li>
 </ul>
 
 </body>
