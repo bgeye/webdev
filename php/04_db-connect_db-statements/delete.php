@@ -1,7 +1,7 @@
 <?php
 require_once '../DB.php';
 
-$id = 16d;
+$id = 16;
 $query = "DELETE FROM user WHERE id = $id";
 $num = DB::get()->exec($query);
 
