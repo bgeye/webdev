@@ -1,0 +1,26 @@
+/**
+*-----------MOBILE-----------
+*/
+
+/*devices width*/
+$phone:480px;
+$tablet:768px;
+$desktop:1200px;
+
+@mixin responsive($device){
+  @if($device == 'phone'){
+    @media only screen and (min-width:$phone) {
+
+    }
+  }
+  @if($device == 'tablet'){
+    @media only screen and (min-width:$tablet) {
+
+    }
+  }
+  @if($device == 'desktop'){
+    @media only screen and (min-width:$desktop) {
+
+    }
+  }
+}
