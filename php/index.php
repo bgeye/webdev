@@ -40,6 +40,7 @@
         <ul>
             <li><a href="05_fetch/aufgabe9/aufgabe9.php">Aufgabe 9</a></li>
             <li><a href="05_fetch/aufgabe10/aufgabe10.php">Aufgabe 10</a></li>
+            <li><a href="05_fetch/aufgabe11/aufgabe11.php">Aufgabe 11</a></li>
         </ul>
     </li>
 </ul>

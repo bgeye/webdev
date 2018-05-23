@@ -29,4 +29,5 @@ private static $db;
     }
 }
 
-echo DB::get()->getAttribute(PDO::ATTR_CONNECTION_STATUS); //call from external
+//check connection status
+//echo DB::get()->getAttribute(PDO::ATTR_CONNECTION_STATUS); //call from external
