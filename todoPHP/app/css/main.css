@@ -49,6 +49,9 @@ table {
   -webkit-box-sizing: border-box;
   box-sizing: border-box; }
 
+html {
+  font-size: 62.5%; }
+
 body {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -64,7 +67,21 @@ body {
   font-size: 14px;
   font-weight: lighter;
   background-color: #f5f5f5;
-  color: #4d4d4d; }
+  color: #4d4d4d;
+  font-size: 15px;
+  font-size: 1.5rem; }
+
+h1 {
+  font-size: 1.8rem;
+  font-weight: bold; }
+
+h2 {
+  font-size: 1.8rem;
+  font-weight: bold; }
+
+h3 {
+  font-size: 1.6rem;
+  font-weight: bold; }
 
 .img_base {
   width: 100%;
@@ -81,6 +98,9 @@ body {
   /*flex-item 3*/
   cursor: pointer;
   outline: none; }
+
+.msg {
+  color: tomato; }
 
 /**
 *-----------FORM-----------
@@ -136,7 +156,7 @@ input:focus {
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   /*flex-container 1*/
-  width: 500px;
+  width: 1000px;
   margin-top: 100px; }
   .todo__font {
     font-size: 24px; }
