@@ -22,4 +22,19 @@ class TaskLoader{
 
         return($data[0]);
     }
+
+    function createTask($title, $description, $duedate)
+    {
+
+        echo $title;
+        //prepared statement
+        $statement = DB::get()->prepare("INSERT into task(id,user_id,status_id,title,description,duration,duedate,created,updated)
+        VALUES (NULL,8,1,$title,$description,5,$duedate,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP)");
+        //execute statement
+        $statement->execute();
+        //$lastInsertId = DB::get()->lastInsertId();
+
+        //return 'Der neue Task mit ID = '.$lastInsertId.' wurde erfolgreich erzeugt.';
+
+    }
 }

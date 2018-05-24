@@ -11,24 +11,28 @@
     <link href="/css/reset.css" rel="stylesheet">
     <link href="/css/main.css" rel="stylesheet">
     <!-- endbuild -->
-    <title>todo</title>
+    <title>create confirmation</title>
 </head>
 <body class="body">
 
     <div class=""><!--class todo-->
-        <h2 class="todo__title">create</h2>
+        <h2 class="todo__title">create confirmation</h2>
 
-        <form method="POST" action="createconfirmation.php">
-            <label id="title">Title</label>
-            <input type="text" name="title">
-            <label id="description">Description</label>
-            <input type="text" name="description">
-            <label id="duration">Duration</label>
-            <input type="text" name="duration">
-            <label id="duedate">Duedate</label>
-            <input type="text" name="duedate">
-            <input type="submit" name="submit" value="Save">
-        </form>
+        <?php
+            //print_r($_POST['title']);
+            if(isset($_POST['submit'])){
+                $title = $_POST['title'];
+                $description = $_POST['description'];
+                //$duration = $_POST['duration'];
+                $duedate = $_POST['duedate'];
+            }
+
+            $TaskLoader = new TaskLoader();
+            $confirmation = $TaskLoader->createTask($title,$description,$duedate);
+
+            //echo $confirmation;
+
+        ?>
 
         <br><br><br>
         <div><a href="index.php">Taskliste</a></div>

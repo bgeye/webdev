@@ -46,7 +46,8 @@
 
 
         ?>
-
+        <br><br><br>
+    <div><a href="create.php">New Task</a></div>
     </div>
 <!--
     <script src="js/speech.js"></script>
