@@ -23,18 +23,28 @@ class TaskLoader{
         return($data[0]);
     }
 
-    function createTask($title, $description, $duedate)
-    {
+    function createTask($title, $description,$duration,$duedate){
 
-        echo $title;
         //prepared statement
-        $statement = DB::get()->prepare("INSERT into task(id,user_id,status_id,title,description,duration,duedate,created,updated)
-        VALUES (NULL,8,1,$title,$description,5,$duedate,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP)");
+        $statement = DB::get()->prepare("INSERT INTO task(id,user_id,status_id,title,description,duration,duedate,created,updated)
+        VALUES (NULL,8,1,'$title','$description',$duration,'$duedate',CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP )");
+
         //execute statement
         $statement->execute();
-        //$lastInsertId = DB::get()->lastInsertId();
+        $lastInsertId = DB::get()->lastInsertId();
 
-        //return 'Der neue Task mit ID = '.$lastInsertId.' wurde erfolgreich erzeugt.';
+        echo 'Der neue Task mit ID = '.$lastInsertId.' wurde erfolgreich erzeugt.';
 
+    }
+
+    function updateTask($taskId){
+
+        //prepared statement
+        $statement = DB::get()->prepare("SELECT status_id,title,description,duration,duedate FROM task WHERE t.id = :taskid");
+
+        $statement->execute(array(':taskid'=>$taskId));
+        $data = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        return $data;
     }
 }

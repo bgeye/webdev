@@ -19,18 +19,17 @@
         <h2 class="todo__title">create confirmation</h2>
 
         <?php
-            //print_r($_POST['title']);
+
             if(isset($_POST['submit'])){
+                DB::get()->getAttribute(PDO::ATTR_CONNECTION_STATUS);
                 $title = $_POST['title'];
                 $description = $_POST['description'];
-                //$duration = $_POST['duration'];
+                $duration = intval($_POST['duration'],10);
                 $duedate = $_POST['duedate'];
             }
 
             $TaskLoader = new TaskLoader();
-            $confirmation = $TaskLoader->createTask($title,$description,$duedate);
-
-            //echo $confirmation;
+            $TaskLoader->createTask($title,$description,$duration,$duedate);
 
         ?>
 
