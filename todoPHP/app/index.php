@@ -1,6 +1,5 @@
 <?php
     require_once "init.php";
-    //spl_autoload_register('my_autoload');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,8 +18,6 @@
         <h2 class="todo__title">todos</h2>
         <?php
 
-//        echo "hello";
-//        echo DB::get()->getAttribute(PDO::ATTR_CONNECTION_STATUS);
 
         echo "<table>";
         echo "<tr><th>title</th></tr>";
