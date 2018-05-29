@@ -39,6 +39,7 @@
             echo '<td><a href="done.php?id="'.$value['id'].'>Done</a></td>';
             echo '<td>'.$value['title'].'</td>';
             echo '<td><a href=detail.php?id='.$value['id'].'>Details</a></td>';
+            echo '<td><a href=edit.php?id='.$value['id'].'>Edit</a></td>';
             echo '<td><a href="delete.php?id="'.$value['id'].'>Delete</a></td>';
             echo "</tr>";
         }

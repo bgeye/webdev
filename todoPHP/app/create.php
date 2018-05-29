@@ -19,15 +19,25 @@
         <h2 class="todo__title">create</h2>
 
         <form method="POST" action="createconfirmation.php">
-            <label id="title">Title</label>
-            <input type="text" name="title">
-            <label id="description">Description</label>
-            <input type="text" name="description">
-            <label id="duration">Duration</label>
-            <input type="text" name="duration">
-            <label id="duedate">Duedate</label>
-            <input type="date" name="duedate">
-            <input type="submit" name="submit" value="create">
+            <div>
+                <label id="title">Title</label>
+                <input type="text" name="title">
+            </div>
+            <div>
+                <label id="description">Description</label>
+                <input type="text" name="description">
+            </div>
+            <div>
+                <label id="duration">Duration</label>
+                <input type="text" name="duration">
+            </div>
+            <div>
+                <label id="duedate">Duedate</label>
+                <input type="date" name="duedate">
+            </div>
+            <div>
+                <input type="submit" name="submit" value="create">
+            </div>
         </form>
 
         <br><br><br>
