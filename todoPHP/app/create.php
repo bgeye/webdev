@@ -1,5 +1,5 @@
 <?php
-    require_once "inc.php";
+    require_once "init.php";
     //spl_autoload_register('my_autoload');
 ?>
 <!DOCTYPE html>

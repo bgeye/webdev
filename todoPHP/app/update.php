@@ -1,5 +1,5 @@
 <?php
-require_once "inc.php";
+require_once "init.php";
 
 if(isset($_POST['submit'])){
     //print_r($_POST);

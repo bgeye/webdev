@@ -42,7 +42,7 @@ class TaskLoader{
         //prepared statement
         $statement = DB::get()->prepare("UPDATE task t SET t.status_id = :statusid, t.title = :title, t.description = :description, t.duration = :duration, t.duedate = :duedate, t.updated = :updatedt WHERE t.id = :taskid");
         print_r($statement);
-        $statement->execute(array(':statusid'=>$statusId,':title'=>$title,':description'=>$description,':duration'=>$duration,':duedate'=>$duedate,':updatedt'=>CURRENT_TIMESTAMP,':taskid'=>$taskId));
+        $statement->execute(array(':statusid'=>$statusId,':title'=>'$title',':description'=>'$description',':duration'=>$duration,':duedate'=>'$duedate',':updatedt'=>CURRENT_TIMESTAMP,':taskid'=>$taskId));
         if($statement > 0){
             echo "Update vom Task $title war erfolgreich!";
         }else{

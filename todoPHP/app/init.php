@@ -16,3 +16,11 @@ function my_autoload($class_name)
 }
 spl_autoload_register('my_autoload');
 
+
+
+
+
+//url function
+
+//ur
+
