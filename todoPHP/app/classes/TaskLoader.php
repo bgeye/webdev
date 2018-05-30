@@ -44,7 +44,7 @@ class TaskLoader{
         //print_r($statement);
         $statement->execute(array(':statusid'=>$statusId,':title'=>$title,':description'=>$description,':duration'=>$duration,':duedate'=>'$duedate',':updatedt'=>'CURRENT_TIMESTAMP',':taskid'=>$taskId));
         $num = $statement->rowCount();
-
+        //ob_start();
         if($num > 0){
             echo "Update vom Task $title war erfolgreich!";
         }else{

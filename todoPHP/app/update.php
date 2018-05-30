@@ -11,8 +11,8 @@ if(isset($_POST['submit'])){
     $duedate = $_POST['duedate'];
 
     $taskLoader = new TaskLoader();
-    ob_start();
+
     $taskLoader->updateTask($statusId,$title,$description,$duration,$duedate,$taskId);
     redirect("http://local-todophp/index.php");
-    ob_end_flush();
+    //ob_end_flush();
 }
