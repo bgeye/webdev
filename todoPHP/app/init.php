@@ -27,8 +27,3 @@ function redirect($url = ""){
     exit;
 }
 
-
-//url function
-
-//ur
-

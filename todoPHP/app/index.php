@@ -65,6 +65,7 @@
 
         <br><br><br>
     <div><a href="create.php">New Task</a></div>
+    <div><a href="createuser.php">New User</a></div>
     </div>
 <!--
     <script src="js/speech.js"></script>
