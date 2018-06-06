@@ -16,6 +16,11 @@
 
     <div class="todo"><!--class todo-->
         <h2 class="todo__title">todos</h2>
+        <div><a href="create.php">New Task</a></div>
+        <br>
+        <div><a href="createuser.php">New User</a></div>
+        <br>
+        <div><a href="login.php">Login</a></div>
         <?php
 
         echo "<ul class='todo__list todo__font todo__list--fade list'>";
@@ -62,10 +67,6 @@
 
 
         ?>
-
-        <br><br><br>
-    <div><a href="create.php">New Task</a></div>
-    <div><a href="createuser.php">New User</a></div>
     </div>
 <!--
     <script src="js/speech.js"></script>
