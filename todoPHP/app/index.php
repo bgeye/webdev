@@ -39,6 +39,8 @@
             echo '<div class="list__del">';
             echo '<button class="btn btnremove">';
             echo '<img class="img_base list__removeicon" src="img/close.svg">';
+            echo '<a href="detail.php?id='.$value['id'].'">Details</a>';
+            echo '<a href="edit.php?id='.$value['id'].'">Edit</a>';
             echo '</div>';
             echo '</button>';
             echo '</li>';
@@ -60,23 +62,6 @@
 
 
         ?>
-
-        <ul class="todo__list todo__font todo__list--fade list">
-            <li class="list__item list__item--show" id="0">
-                <div class="list__taskdone">
-                    <input id="taskdone_0" type="checkbox" class="taskdone">
-                    <label for="taskdone_0"><span></span></label>
-                </div>
-                <span class="list__txt list__txt--done">test</span>
-                <div class="list__del">
-                    <button class="btn btnremove">
-                        <img class="img_base list__removeicon" src="img/close.svg">
-                    </button>
-                </div>
-            </li>
-
-
-
 
         <br><br><br>
     <div><a href="create.php">New Task</a></div>

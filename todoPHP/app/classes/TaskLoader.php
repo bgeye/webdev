@@ -1,5 +1,5 @@
 <?php
-//require_once "init.php";
+
 class TaskLoader{
     function getAll(){
         //prepared statement
@@ -46,9 +46,13 @@ class TaskLoader{
         $num = $statement->rowCount();
         //ob_start();
         if($num > 0){
+
             echo "Update vom Task $title war erfolgreich!";
+            redirectDelay(1,"http://local-todophp/index.php");
+
         }else{
             echo "Task $title wurde nicht updated, da keine Daten verändert wurden!";
+            redirectDelay(1,"http://local-todophp/index.php");
         }
 
     }

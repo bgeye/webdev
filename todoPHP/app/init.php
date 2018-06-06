@@ -17,6 +17,11 @@ function my_autoload($class_name)
 spl_autoload_register('my_autoload');
 
 
+function redirectDelay($delay,$url = ""){
+    header("Refresh:$delay; url=$url");
+    exit;
+}
+
 function redirect($url = ""){
     header("Location:$url");
     exit;

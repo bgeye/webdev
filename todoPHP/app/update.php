@@ -13,6 +13,7 @@ if(isset($_POST['submit'])){
     $taskLoader = new TaskLoader();
 
     $taskLoader->updateTask($statusId,$title,$description,$duration,$duedate,$taskId);
-    redirect("http://local-todophp/index.php");
+
+
     //ob_end_flush();
 }
