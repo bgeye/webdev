@@ -1,5 +1,6 @@
 <?php
     require_once "init.php";
+    include "private.inc.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -7,9 +7,10 @@
  */
 
 require_once "init.php";
-if($_SESSION['userid']){
-    echo $_SESSION['userid'];
-    echo session_id();
+if(isset($_SESSION['userid'])){
+    redirect("index.php");
+}else{
+    echo "Bitte einloggen!";
 }
 
 

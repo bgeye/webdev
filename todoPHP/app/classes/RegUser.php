@@ -27,24 +27,31 @@ class RegUser{
 
     function checkUser($username,$password){
         //prepared select statement
-        $statement = DB::get()->prepare("SELECT u.id,u.password FROM user u where u.username = '$username'");
+        $statement = DB::get()->prepare("SELECT u.id,u.password,u.name,u.lastname FROM user u where u.username = :username");
 
         //execute select statement
-        $statement->execute();
+        $statement->execute(array(':username'=>$username));
 
         $num = $statement->rowCount();
         if($num > 0){
             $data = $statement->fetchAll(PDO::FETCH_ASSOC);
-            $dbPassword = $data[0]['password'];
-            $userId = $data[0]['id'];
+            $dataUser = $data[0];
+            $dbPassword = $dataUser['password'];
+            $userId = $dataUser['id'];
+            $firstname = $dataUser['name'];
+            $lastname = $dataUser['lastname'];
 
             $validPassword = $this->verifyPassword($password,$dbPassword);
 
             if($validPassword == true){
                 echo "Login erfolgreich";
                 $_SESSION['userid']= $userId;
+                $_SESSION['firstname']= $firstname;
+                $_SESSION['lastname']= $lastname;
+                redirect('index.php');
             }else{
-                echo "Login nicht erfolgreich, Benutzername oder Password ungültig. Bitte versuche erneut!.";
+                echo "Login nicht erfolgreich, Benutzername oder Password ungültig. Bitte versuche erneut!<br>";
+                echo "<a href='login.php'>Login</a>";
             }
         }else{
             echo "Login nicht erfolgreich, Benutzername oder Password ungültig. Bitte versuche erneut!.";
