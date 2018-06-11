@@ -22,6 +22,8 @@ if(isset($_POST['submit'])){
         $RegUser = new RegUser();
         $RegUser->checkUser($username,$password);
     }else{
+        echo "Das Feld Username oder Password war leer, bitte füllen sie beide Felder aus!";
+
         setLoginForm();
     }
 }else{
@@ -31,14 +33,20 @@ if(isset($_POST['submit'])){
 
 
 function setLoginForm(){
+    echo $username;
     echo "<form action='login.php' method='post'>";
     echo "<div>";
     echo "<label id='username'>";
-    echo "<input type='text' name='username' placeholder='username'>";
+    echo "<input type='text' name='username' placeholder='username'";
+    if(isset($username)){
+        echo "value='$username'>";
+    }else{
+        echo ">";
+    }
     echo "</div>";
     echo "<div>";
     echo "<label id='password'>";
-    echo "<input type='password' name='password' placeholder='password'>";
+    echo "<input type='password' name='password' placeholder='password' value='$password'>";
     echo "</div>";
     echo "<div>";
     echo "<input type='submit' name='submit' value='Login'>";
